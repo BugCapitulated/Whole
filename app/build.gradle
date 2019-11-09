@@ -1,0 +1,19 @@
+apply plugin: 'com.android.application'
+apply from: '../android_commons.gradle'
+
+android {
+    defaultConfig {
+        applicationId ApplicationId.id
+    }
+}
+
+dependencies {
+    // Module
+    implementation project(CoreModule.common)
+    implementation project(CoreModule.data)
+    implementation project(FeatureModule.main)
+    implementation project(FeatureModule.mviExample)
+
+    // Navigation
+    implementation Libraries.cicerone
+}

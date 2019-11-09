@@ -1,0 +1,24 @@
+android {
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    // Test
+    testImplementation TestLibraries.testJunit
+
+    // Android test
+    androidTestImplementation TestLibraries.androidTestRunner
+    androidTestImplementation TestLibraries.espresso
+
+    // Koin
+    androidTestImplementation TestLibraries.koin
+
+    // Mockk
+    androidTestImplementation TestLibraries.mockk
+    testImplementation TestLibraries.mockk
+
+    // Database
+    androidTestImplementation TestLibraries.room
+}

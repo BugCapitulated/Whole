@@ -1,0 +1,7 @@
+include ':app',
+        ':core_common',
+        ':core_data',
+        ':feature_main',
+        ':feature_mviexample'
+
+rootProject.name = 'Whole'

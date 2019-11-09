@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    // Module
+    implementation project(CoreModule.common)
+
+    // Database
+    implementation Libraries.room
+    implementation Libraries.roomRx
+    kapt Libraries.roomCompiler
+}

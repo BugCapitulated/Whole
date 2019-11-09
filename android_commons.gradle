@@ -1,0 +1,60 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Version.compileVersion
+
+    defaultConfig {
+        minSdkVersion Version.minVersion
+        targetSdkVersion Version.targetVersion
+
+        versionCode Release.versionCode
+        versionName Release.versionName
+    }
+
+    compileOptions {
+        sourceCompatibility Version.javaVersion
+        targetCompatibility Version.javaVersion
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+
+        release {
+            minifyEnabled true
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    //implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Kotlin
+    implementation Kotlin.kotlin
+
+    // Support
+    implementation Libraries.appCompat
+    implementation Libraries.coreKtx
+
+    // UI
+    implementation Libraries.material
+    implementation Libraries.constraintLayout
+    implementation Libraries.recycler
+
+    // DI
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
+
+    // Rx
+    implementation Libraries.rxJava
+    implementation Libraries.rxKotlin
+    implementation Libraries.rxAndroid
+    implementation Libraries.rxBinding
+    implementation Libraries.rxBindingAppcompat
+}
