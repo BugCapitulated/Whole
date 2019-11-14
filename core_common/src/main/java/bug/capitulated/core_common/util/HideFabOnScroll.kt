@@ -11,44 +11,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HideFabOnScroll(context: Context, attrs: AttributeSet) : FloatingActionButton.Behavior() {
 
-    override fun onStartNestedScroll(
-        coordinatorLayout: CoordinatorLayout,
-        child: FloatingActionButton,
-        directTargetChild: View,
-        target: View,
-        axes: Int
-    ): Boolean {
+    override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout, child: FloatingActionButton, directTargetChild: View, target: View, axes: Int): Boolean {
         return true
     }
 
-    override fun layoutDependsOn(
-        parent: CoordinatorLayout,
-        child: FloatingActionButton,
-        dependency: View
-    ): Boolean {
+    override fun layoutDependsOn(parent: CoordinatorLayout, child: FloatingActionButton, dependency: View): Boolean {
         return dependency is RecyclerView
     }
 
-    override fun onNestedScroll(
-        coordinatorLayout: CoordinatorLayout,
-        fab: FloatingActionButton,
-        target: View,
-        dxConsumed: Int,
-        dyConsumed: Int,
-        dxUnconsumed: Int,
-        dyUnconsumed: Int,
-        type: Int
-    ) {
-        super.onNestedScroll(
-            coordinatorLayout,
-            fab,
-            target,
-            dxConsumed,
-            dyConsumed,
-            dxUnconsumed,
-            dyUnconsumed,
-            type
-        )
+    override fun onNestedScroll(coordinatorLayout: CoordinatorLayout, fab: FloatingActionButton, target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
+        super.onNestedScroll(coordinatorLayout, fab, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
 
         if (dyConsumed > 0 && fab.isVisible) {
             fab.hideWithAnimation()
