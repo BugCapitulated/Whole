@@ -38,4 +38,5 @@ class MviExampleViewModel(
         is MviExampleAction.LoadDataFailed -> MviExampleSubscription.LoadDataFailed(action.error)
         else -> super.publishSubscription(action, state)
     }
+
 }

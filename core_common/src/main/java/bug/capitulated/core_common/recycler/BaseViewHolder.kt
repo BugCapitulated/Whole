@@ -14,18 +14,6 @@ abstract class BaseViewHolder<T>(
 
     protected val resources by lazy { itemView.resources!! }
 
-    protected val hasPosition: Boolean
-        get() = adapterPosition != NO_POSITION
-
-    protected fun approveClick(callback: () -> Unit): Boolean {
-        if (adapterPosition != NO_POSITION) {
-            callback.invoke()
-            return true
-        }
-
-        return false
-    }
-
     protected fun getString(@StringRes id: Int): String = resources.getString(id)
 
     abstract fun bind(item: T)

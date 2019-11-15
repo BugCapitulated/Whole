@@ -2,6 +2,7 @@ package bug.capitulated.feature_mviexample.presentation.recycler
 
 import android.view.View
 import bug.capitulated.core_common.recycler.BaseViewHolder
+import bug.capitulated.core_common.util.approveClick
 import bug.capitulated.core_common.util.onClick
 import bug.capitulated.core_data.datasource.room.entity.Sample
 import kotlinx.android.synthetic.main.item_list.*
