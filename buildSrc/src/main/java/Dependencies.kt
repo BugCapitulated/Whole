@@ -77,8 +77,7 @@ object Libraries {
 
     // UI
     const val material = "com.google.android.material:material:$materialVersion"
-    const val constraintLayout =
-        "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     const val recycler = "androidx.recyclerview:recyclerview:$recyclerVersion"
     const val viewpager2 = "androidx.viewpager2:viewpager2:$viewpager2Version"
     const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
@@ -98,8 +97,7 @@ object Libraries {
     const val jsoup = "org.jsoup:jsoup:$jsoupVersion"
     const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
     const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitRxAdapterVersion"
-    const val retrofitXmlConverter =
-        "com.squareup.retrofit2:converter-simplexml:$retrofitXmlConverterVersion"
+    const val retrofitXmlConverter = "com.squareup.retrofit2:converter-simplexml:$retrofitXmlConverterVersion"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     // Rx
@@ -107,13 +105,12 @@ object Libraries {
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:$rxBindingVersion"
-    const val rxBindingAppcompat =
-        "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingVersion"
+    const val rxBindingAppcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingVersion"
 
     // Database
     const val room = "androidx.room:room-runtime:$roomVersion"
-    const val roomRx = "androidx.room:room-rxjava2:$roomVersion"
     const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+    const val roomRx = "androidx.room:room-rxjava2:$roomVersion"
     const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
 }
 
