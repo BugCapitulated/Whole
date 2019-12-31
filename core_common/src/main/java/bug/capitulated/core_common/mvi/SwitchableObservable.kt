@@ -21,10 +21,12 @@ internal class SwitchableObservable<T : Any> internal constructor(
 
     private var observer: Observer<in T>? = null
 
+
     override fun subscribeActual(observer: Observer<in T>?) {
         this.observer = observer
         updateSubscription()
     }
+
 
     internal fun switchSourceObservable(source: Observable<T>) {
         this.source = source

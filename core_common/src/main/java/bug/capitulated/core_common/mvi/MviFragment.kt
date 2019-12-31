@@ -30,6 +30,7 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
 
     private val mviDisposable = CompositeDisposable()
 
+
     override fun onStart() {
         super.onStart()
 
@@ -48,6 +49,7 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
         super.onStop()
         mviDisposable.clear()
     }
+
 
     /**
      * Принимает и привязывает ViewModel к экрану
@@ -70,6 +72,7 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
         _currentState = state
         render(state)
     }
+
 
     private companion object {
 

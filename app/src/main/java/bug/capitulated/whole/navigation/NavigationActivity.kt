@@ -27,7 +27,9 @@ abstract class NavigationActivity(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // TODO: Стартовать с Main'а
-        savedInstanceState.isNull { router.newRootScreen(ScreenDestination.MviExample) }
+        savedInstanceState.isNull {
+            router.newRootScreen(ScreenDestination.Main)
+        }
     }
 
     override fun onResumeFragments() {
@@ -56,6 +58,10 @@ abstract class NavigationActivity(
 
     override fun navigateToMviExample() {
         navigateTo(ScreenDestination.MviExample)
+    }
+
+    override fun navigateToWorkManager() {
+        navigateTo(ScreenDestination.WorkManager)
     }
 
 

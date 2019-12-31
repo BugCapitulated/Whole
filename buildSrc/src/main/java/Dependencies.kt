@@ -1,8 +1,6 @@
 import Version.kotlinVersion
 import org.gradle.api.JavaVersion
 
-private const val koinVersion = "2.0.1"
-
 private const val appCompatVersion = "1.1.0"
 private const val coreKtxVersion = "1.1.0"
 private const val materialVersion = "1.2.0-alpha01"
@@ -12,6 +10,7 @@ private const val viewpager2Version = "1.0.0-rc01"
 private const val pagingVersion = "2.1.0"
 private const val glideVersion = "4.9.0"
 private const val ciceroneVersion = "5.0.0"
+private const val koinVersion = "2.0.1"
 private const val gsonVersion = "2.8.5"
 private const val jsoupVersion = "1.11.2"
 private const val retrofitVersion = "2.5.0"
@@ -23,6 +22,7 @@ private const val rxAndroidVersion = "2.1.0"
 private const val rxBindingVersion = "3.0.0-alpha2"
 private const val roomVersion = "2.2.0"
 private const val stethoVersion = "1.5.0"
+private const val workManagerVersion = "2.2.0"
 
 private const val junitVersion = "4.12"
 private const val androidTestRunnerVersion = "1.3.0-alpha02"
@@ -41,12 +41,15 @@ object CoreModule {
     const val app = ":app"
 
     const val common = ":core_common"
-    const val data = ":core_data"
+
+    const val room = ":core_room"
+    const val workManager = ":core_workmanager"
 }
 
 object FeatureModule {
     const val main = ":feature_main"
     const val mviExample = ":feature_mviexample"
+    const val workManager = ":feature_workmanager"
 }
 
 object Release {
@@ -57,6 +60,7 @@ object Release {
 object Version {
     // Language
     val javaVersion = JavaVersion.VERSION_1_8
+    val javaVersionString = javaVersion.toString()
     const val kotlinVersion = "1.3.50"
     const val gradleVersion = "3.5.2"
 
@@ -112,6 +116,10 @@ object Libraries {
     const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
     const val roomRx = "androidx.room:room-rxjava2:$roomVersion"
     const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
+
+    // Work Manager
+    const val workManager = "androidx.work:work-runtime-ktx:$workManagerVersion"
+    const val workManagerRxJava = "androidx.work:work-rxjava2:$workManagerVersion"
 }
 
 object TestLibraries {
@@ -134,4 +142,7 @@ object TestLibraries {
 
     // Database
     const val room = "androidx.room:room-testing:$roomVersion"
+
+    // Work Manager
+    const val workManager = "androidx.work:work-testing:$workManagerVersion"
 }

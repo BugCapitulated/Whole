@@ -17,6 +17,10 @@ android {
         targetCompatibility Version.javaVersion
     }
 
+    kotlinOptions {
+        jvmTarget = Version.javaVersionString
+    }
+
     buildTypes {
         debug {
             minifyEnabled false

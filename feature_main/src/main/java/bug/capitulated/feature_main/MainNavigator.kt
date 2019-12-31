@@ -4,4 +4,6 @@ interface MainNavigator {
 
     fun navigateToMviExample()
 
+    fun navigateToWorkManager()
+
 }

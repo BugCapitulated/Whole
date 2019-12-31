@@ -10,9 +10,11 @@ android {
 dependencies {
     // Module
     implementation project(CoreModule.common)
-    implementation project(CoreModule.data)
+    implementation project(CoreModule.room)
+    implementation project(CoreModule.workManager)
     implementation project(FeatureModule.main)
     implementation project(FeatureModule.mviExample)
+    implementation project(FeatureModule.workManager)
 
     // Navigation
     implementation Libraries.cicerone

@@ -1,7 +1,6 @@
 package bug.capitulated.feature_mviexample.domain
 
-import bug.capitulated.core_data.MviExampleRepository
-import bug.capitulated.core_data.datasource.room.entity.Sample
+import bug.capitulated.core_room.datasource.entity.SampleEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
 
@@ -11,7 +10,7 @@ class MviExampleInteractor(private val repository: MviExampleRepository) {
         repository.addSample()
     }
 
-    fun getSamples(): Observable<List<Sample>> {
+    fun getSamples(): Observable<List<SampleEntity>> {
         return repository.getSamples()
     }
 

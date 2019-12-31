@@ -1,0 +1,12 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    // Module
+    implementation project(CoreModule.common)
+
+    // Work Manager
+    implementation Libraries.workManager
+    implementation Libraries.workManagerRxJava
+}

@@ -1,0 +1,3 @@
+package bug.capitulated.feature_workmanager.presentation.mvi
+
+sealed class WorkManagerAction

@@ -17,8 +17,3 @@ fun <T> Completable.map(item: () -> T) = andThen(Observable.just<T>(item.invoke(
 fun BehaviorSubject<String>.clear() {
     diffedValue = ""
 }
-
-@CheckReturnValue
-fun <T> Observable<T>.subscribeOnIo(): Disposable {
-    return subscribeOn(Schedulers.io()).subscribe()
-}

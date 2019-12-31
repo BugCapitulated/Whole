@@ -2,12 +2,12 @@ package bug.capitulated.feature_mviexample.presentation.recycler
 
 import android.view.View
 import bug.capitulated.core_common.recycler.BaseAdapter
-import bug.capitulated.core_data.datasource.room.entity.Sample
+import bug.capitulated.core_room.datasource.entity.SampleEntity
 import bug.capitulated.feature_mviexample.R
 
 internal class SampleAdapter(
     private val onClickListener: OnSampleClickListener
-) : BaseAdapter<Sample, SampleViewHolder>() {
+) : BaseAdapter<SampleEntity, SampleViewHolder>() {
 
     override fun onLayoutRequested(viewType: Int) = R.layout.item_list
 

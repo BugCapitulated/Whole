@@ -2,7 +2,7 @@ package bug.capitulated.core_common.recycler
 
 import androidx.recyclerview.widget.DiffUtil
 
-open class EntityDiffCallback<Item, PrimaryKey>(
+class EntityDiffCallback<Item, PrimaryKey>(
     private val oldItems: List<Item>,
     private val newItems: List<Item>,
     private val identifierReceiver: (Item) -> PrimaryKey

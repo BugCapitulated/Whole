@@ -6,9 +6,8 @@ import androidx.core.view.isVisible
 import bug.capitulated.core_common.mvi.MviFragment
 import bug.capitulated.core_common.util.init
 import bug.capitulated.core_common.util.isNull
-import bug.capitulated.core_common.util.onClick
 import bug.capitulated.core_common.util.toast
-import bug.capitulated.core_data.datasource.room.entity.Sample
+import bug.capitulated.core_room.datasource.entity.SampleEntity
 import bug.capitulated.feature_mviexample.R
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleIntent
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleSubscription
@@ -24,6 +23,7 @@ class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, Mv
 
     private val adapter = SampleAdapter(this)
 
+
     override fun provideViewModel(): MviExampleViewModel = getViewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, Mv
         recycler_view.init(adapter)
 
         savedInstanceState.isNull { postIntent(MviExampleIntent.LoadData) }
-        fab.onClick = { postIntent(MviExampleIntent.AddSample) }
+        fab.setOnClickListener{ postIntent(MviExampleIntent.AddSample) }
     }
 
     override fun render(state: MviExampleViewState) {
@@ -45,7 +45,8 @@ class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, Mv
         }
     }
 
-    override fun onSampleClick(item: Sample) {
+
+    override fun onSampleClick(item: SampleEntity) {
         toast("Item " + item.id.toString() + " clicked")
     }
 

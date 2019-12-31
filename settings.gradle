@@ -1,7 +1,9 @@
 include ':app',
         ':core_common',
-        ':core_data',
+        ':core_room',
+        ':core_workmanager',
         ':feature_main',
-        ':feature_mviexample'
+        ':feature_mviexample',
+        ':feature_workmanager'
 
 rootProject.name = 'Whole'
