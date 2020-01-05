@@ -17,6 +17,12 @@ interface WorkManagerDataSource {
 internal const val WORK_MANAGER_PARAM_1 = "WORK_MANAGER_PARAM_1"
 
 
+/**
+ * Полезные ссылки:
+ * https://developer.android.com/topic/libraries/architecture/workmanager/basics
+ * https://proandroiddev.com/workout-your-tasks-with-workmanager-intro-db5aefe14d66
+ * https://proandroiddev.com/workout-your-tasks-with-workmanager-main-components-1c0c66317a3e
+ */
 internal class WorkManagerDataSourceImpl(
     private val workManager: WorkManager
 ) : WorkManagerDataSource {
@@ -35,6 +41,7 @@ internal class WorkManagerDataSourceImpl(
             .build()
 
         // Формирование параметров для передачи их в воркер с типом ключ - значение
+        // Ограничение при передачи данных - 10Kb
         val params = workDataOf(WORK_MANAGER_PARAM_1 to "some parameter")
 
         OneTimeWorkRequestBuilder<SampleWorker>()
@@ -120,6 +127,7 @@ internal class WorkManagerDataSourceImpl(
         //workManager.cancelAllWorkByTag()
         //workManager.cancelUniqueWork()
     }
+
 
     private fun makeSampleOneTimeWorkRequest(): OneTimeWorkRequest {
         return OneTimeWorkRequestBuilder<SampleWorker>().build()

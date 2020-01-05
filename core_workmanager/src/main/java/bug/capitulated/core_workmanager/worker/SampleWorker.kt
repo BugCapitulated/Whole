@@ -23,6 +23,7 @@ internal class SampleWorker(
         val outputData = workDataOf(WORK_MANAGER_PARAM_1 to "some result")
 
         // Возвращение сообщения о том, что задача выполнена успешна, к ответу прикладываем результат
+        // Также можно вернуть failure или retry
         return Result.success(outputData)
     }
 
