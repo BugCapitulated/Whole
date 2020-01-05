@@ -25,6 +25,7 @@ abstract class BaseFragment(
 
     private val navigator by lazy { activity as BaseNavigator }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (hasOptionMenu) setHasOptionsMenu(true)
@@ -56,6 +57,7 @@ abstract class BaseFragment(
         super.onDestroyView()
     }
 
+
     open fun onBackPressed() = finish()
 
     protected open fun onHomeUpPressed() = finish()
@@ -78,6 +80,7 @@ abstract class BaseFragment(
         titleRes?.let { this.title = getString(titleRes) }
         supportActionBar?.setDisplayHomeAsUpEnabled(enableArrowUp)
     }
+
 
     protected companion object {
 
