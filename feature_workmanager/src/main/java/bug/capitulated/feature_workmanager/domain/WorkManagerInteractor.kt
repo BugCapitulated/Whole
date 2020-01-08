@@ -12,4 +12,8 @@ class WorkManagerInteractor(private val repository: WorkManagerRepository) {
         repository.startPeriodicWork()
     }
 
+    fun clearAllWorks() = Completable.fromAction {
+        repository.clearAllWorks()
+    }
+
 }

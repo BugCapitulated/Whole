@@ -15,9 +15,9 @@ class MviExampleViewModel(
 
     override fun act(state: MviExampleViewState, intent: MviExampleIntent) = when (intent) {
         MviExampleIntent.LoadData -> interactor.getSamples()
-            .map<MviExampleAction> { MviExampleAction.SamplesReceived(it) }
+            .map<MviExampleAction>(MviExampleAction::SamplesReceived)
             .startWith(MviExampleAction.LoadDataStarted)
-            .onErrorReturn { MviExampleAction.LoadDataFailed(it) }
+            .onErrorReturn(MviExampleAction::LoadDataFailed)
 
         MviExampleIntent.AddSample -> interactor.addSample()
             .toObservable()

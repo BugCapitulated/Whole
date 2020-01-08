@@ -5,4 +5,9 @@ dependencies {
     // Module
     implementation project(CoreModule.common)
     implementation project(CoreModule.workManager)
+
+    // Work Manager
+    implementation Libraries.workManager
+    implementation Libraries.workManagerRxJava
+    implementation Libraries.rxWorkManager
 }

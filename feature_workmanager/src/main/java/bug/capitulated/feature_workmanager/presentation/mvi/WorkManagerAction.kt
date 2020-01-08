@@ -1,3 +1,9 @@
 package bug.capitulated.feature_workmanager.presentation.mvi
 
-sealed class WorkManagerAction
+import androidx.work.WorkInfo
+
+sealed class WorkManagerAction {
+
+    class WorkInfosReceived(val value: List<WorkInfo>) : WorkManagerAction()
+
+}

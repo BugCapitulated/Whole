@@ -12,4 +12,8 @@ class WorkManagerRepository(private val workManagerDataSource: WorkManagerDataSo
         workManagerDataSource.startPeriodicWork()
     }
 
+    fun clearAllWorks() {
+        workManagerDataSource.clearAllWorks()
+    }
+
 }

@@ -11,10 +11,14 @@ interface WorkManagerDataSource {
 
     fun startPeriodicWork()
 
+    fun clearAllWorks()
+
 }
 
 
-internal const val WORK_MANAGER_PARAM_1 = "WORK_MANAGER_PARAM_1"
+const val WORK_MANAGER_PARAM_1 = "WORK_MANAGER_PARAM_1"
+const val WORK_MANAGER_PARAM_CURRENT_TIME = "WORK_MANAGER_PARAM_CURRENT_TIME"
+const val WORKER_TAG = "WORKER_TAG"
 
 
 /**
@@ -22,6 +26,7 @@ internal const val WORK_MANAGER_PARAM_1 = "WORK_MANAGER_PARAM_1"
  * https://developer.android.com/topic/libraries/architecture/workmanager/basics
  * https://proandroiddev.com/workout-your-tasks-with-workmanager-intro-db5aefe14d66
  * https://proandroiddev.com/workout-your-tasks-with-workmanager-main-components-1c0c66317a3e
+ * https://proandroiddev.com/how-to-use-workmanager-with-rxjava-b5936f68e024
  */
 internal class WorkManagerDataSourceImpl(
     private val workManager: WorkManager
@@ -58,10 +63,10 @@ internal class WorkManagerDataSourceImpl(
             .setInputData(params)
 
             // Задачи можно группировать по тегам. В дальнейшем по тегу можно прерывать группу задач
-            .addTag("tag")
+            // Также по тегу можно получать статус задачи
+            .addTag(WORKER_TAG)
 
             .build()
-            .observe { "$id: result of work = ${outputData.getString(WORK_MANAGER_PARAM_1)}".log }
             .enqueue()
     }
 
@@ -76,9 +81,23 @@ internal class WorkManagerDataSourceImpl(
      */
     override fun startPeriodicWork() {
         PeriodicWorkRequestBuilder<SampleWorker>(20, TimeUnit.MINUTES, 15, TimeUnit.MINUTES)
+            .addTag(WORKER_TAG)
             .build()
-            .observe { "$id: result of work = ${outputData.getString(WORK_MANAGER_PARAM_1)}".log }
             .enqueue()
+    }
+
+    /**
+     * Остановить задачу можно по id задачи,
+     * можно по тегу, присвоенному некоторым задачам,
+     * также по имени именованной задачи
+     * или можно остановить сразу все задачи
+     */
+    override fun clearAllWorks() {
+        workManager.cancelAllWork()
+
+        //workManager.cancelWorkById()
+        //workManager.cancelAllWorkByTag()
+        //workManager.cancelUniqueWork()
     }
 
     /**
@@ -114,27 +133,13 @@ internal class WorkManagerDataSourceImpl(
         )
     }
 
-    /**
-     * Остановить задачу можно по id задачи,
-     * можно по тегу, присвоенному некоторым задачам,
-     * также по имени именованной задачи
-     * или можно остановить сразу все задачи
-     */
-    fun stopAllWorks() {
-        workManager.cancelAllWork()
-
-        //workManager.cancelWorkById()
-        //workManager.cancelAllWorkByTag()
-        //workManager.cancelUniqueWork()
-    }
-
 
     private fun makeSampleOneTimeWorkRequest(): OneTimeWorkRequest {
         return OneTimeWorkRequestBuilder<SampleWorker>().build()
     }
 
     private fun <T : WorkRequest> T.observe(withResult: WorkInfo.() -> Unit = {}): T {
-        workManager.getWorkStatus(this) {
+        workManager.getWorkInfoById(id) {
             "$id: $state".log
 
             if (outputData.keyValueMap.isNotEmpty()) {

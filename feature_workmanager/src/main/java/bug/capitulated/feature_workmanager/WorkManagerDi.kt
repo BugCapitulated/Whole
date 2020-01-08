@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 val workManagerModule = module {
     factory { WorkManagerFragment() }
-    viewModel { WorkManagerViewModel(get()) }
+    viewModel { WorkManagerViewModel(get(), get()) }
     single { WorkManagerInteractor(get()) }
     single { WorkManagerRepository(get()) }
 }

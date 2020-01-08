@@ -23,6 +23,7 @@ private const val rxBindingVersion = "3.0.0-alpha2"
 private const val roomVersion = "2.2.0"
 private const val stethoVersion = "1.5.0"
 private const val workManagerVersion = "2.2.0"
+private const val rxWorkManagerVersios = "1.0.0"
 
 private const val junitVersion = "4.12"
 private const val androidTestRunnerVersion = "1.3.0-alpha02"
@@ -120,6 +121,7 @@ object Libraries {
     // Work Manager
     const val workManager = "androidx.work:work-runtime-ktx:$workManagerVersion"
     const val workManagerRxJava = "androidx.work:work-rxjava2:$workManagerVersion"
+    const val rxWorkManager = "com.github.PaulinaSadowska:RxWorkManagerObservers:$rxWorkManagerVersios"
 }
 
 object TestLibraries {

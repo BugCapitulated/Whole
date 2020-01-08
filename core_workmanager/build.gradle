@@ -9,4 +9,5 @@ dependencies {
     // Work Manager
     implementation Libraries.workManager
     implementation Libraries.workManagerRxJava
+    implementation Libraries.rxWorkManager
 }
