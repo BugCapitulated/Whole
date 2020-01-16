@@ -51,6 +51,7 @@ object FeatureModule {
     const val main = ":feature_main"
     const val mviExample = ":feature_mviexample"
     const val workManager = ":feature_workmanager"
+    const val nightTheme = ":feature_nighttheme"
 }
 
 object Release {

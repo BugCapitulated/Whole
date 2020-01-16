@@ -17,4 +17,10 @@
         android:layout_height="wrap_content"
         android:text="Work manager" />
 
+    <Button
+        android:id="@+id/night_theme_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Theme editor" />
+
 </LinearLayout>

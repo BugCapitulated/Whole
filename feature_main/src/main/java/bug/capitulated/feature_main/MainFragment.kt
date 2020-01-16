@@ -23,6 +23,10 @@ class MainFragment : BaseFragment(
         work_manager_button.setOnClickListener {
             navigator.navigateToWorkManager()
         }
+
+        night_theme_button.setOnClickListener {
+            navigator.navigateToNightTheme()
+        }
     }
 
 }

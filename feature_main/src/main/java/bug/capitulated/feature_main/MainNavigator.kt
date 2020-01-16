@@ -6,4 +6,6 @@ interface MainNavigator {
 
     fun navigateToWorkManager()
 
+    fun navigateToNightTheme()
+
 }

@@ -4,6 +4,7 @@ include ':app',
         ':core_workmanager',
         ':feature_main',
         ':feature_mviexample',
-        ':feature_workmanager'
+        ':feature_workmanager',
+        ':feature_nighttheme'
 
 rootProject.name = 'Whole'

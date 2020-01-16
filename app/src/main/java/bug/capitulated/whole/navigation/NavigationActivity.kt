@@ -26,7 +26,7 @@ abstract class NavigationActivity(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // TODO: Стартовать с Main'а
+
         savedInstanceState.isNull {
             router.newRootScreen(ScreenDestination.Main)
         }
@@ -62,6 +62,10 @@ abstract class NavigationActivity(
 
     override fun navigateToWorkManager() {
         navigateTo(ScreenDestination.WorkManager)
+    }
+
+    override fun navigateToNightTheme() {
+        navigateTo(ScreenDestination.NightTheme)
     }
 
 

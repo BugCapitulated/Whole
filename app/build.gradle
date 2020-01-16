@@ -15,6 +15,7 @@ dependencies {
     implementation project(FeatureModule.main)
     implementation project(FeatureModule.mviExample)
     implementation project(FeatureModule.workManager)
+    implementation project(FeatureModule.nightTheme)
 
     // Navigation
     implementation Libraries.cicerone
