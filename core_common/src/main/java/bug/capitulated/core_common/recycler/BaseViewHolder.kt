@@ -3,7 +3,6 @@ package bug.capitulated.core_common.recycler
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.NO_POSITION
 import kotlinx.android.extensions.LayoutContainer
 
 abstract class BaseViewHolder<T>(
