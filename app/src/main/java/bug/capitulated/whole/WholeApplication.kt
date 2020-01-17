@@ -1,8 +1,6 @@
 package bug.capitulated.whole
 
 import android.app.Application
-import android.content.Context
-import androidx.appcompat.app.AppCompatDelegate
 import bug.capitulated.core_room.datasource.roomModule
 import bug.capitulated.core_workmanager.workManagerCoreModule
 import bug.capitulated.feature_main.mainModule
@@ -17,7 +15,6 @@ internal class WholeApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        applyTheme()
 
         startKoin {
             androidContext(this@WholeApplication)
@@ -36,14 +33,6 @@ internal class WholeApplication : Application() {
                 )
             )
         }
-    }
-
-    // FIXME: Не работает применение темы при запуске приложения
-    private fun applyTheme() {
-        val theme = getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE).getInt("KEY_THEME", -1)
-        AppCompatDelegate.setDefaultNightMode(theme)
-
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
     }
 
 }
