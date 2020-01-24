@@ -1,7 +1,6 @@
 package bug.capitulated.feature_nighttheme
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
@@ -9,11 +8,12 @@ import androidx.core.view.isVisible
 import bug.capitulated.core_common.base.BaseFragment
 import bug.capitulated.core_common.theme.Theme
 import bug.capitulated.core_common.theme.Theme.Companion.defaultThemeInt
-import bug.capitulated.core_common.theme.Theme.Companion.getTheme
+import bug.capitulated.core_common.theme.Theme.Companion.themeOfInt
+import bug.capitulated.core_common.util.is28orMore
 import kotlinx.android.synthetic.main.nighttheme_fragment.*
 
-private const val PREFS_NAME = "PREFS_NAME"
-private const val KEY_THEME = "KEY_THEME"
+const val PREFS_NAME = "PREFS_NAME"
+const val KEY_THEME = "KEY_THEME"
 
 class NightThemeFragment : BaseFragment(
     layoutId = R.layout.nighttheme_fragment
@@ -23,7 +23,6 @@ class NightThemeFragment : BaseFragment(
       TODO:
        Запускать анимацию WindowAnimationTransition только при переключении темы
        Вынести префы в отдельный модуль
-       Не работает применение темы при запуске приложения
     */
 
     private val sharedPrefs by lazy {
@@ -31,7 +30,7 @@ class NightThemeFragment : BaseFragment(
     }
 
     private var savedTheme: Theme
-        get() = getTheme(sharedPrefs.getInt(KEY_THEME, defaultThemeInt))
+        get() = themeOfInt(sharedPrefs.getInt(KEY_THEME, defaultThemeInt))
         set(value) {
             sharedPrefs.edit().putInt(KEY_THEME, value.toInt()).apply()
         }
@@ -49,7 +48,7 @@ class NightThemeFragment : BaseFragment(
     }
 
     private fun initTheme() {
-        themeSystem.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+        themeSystem.isVisible = is28orMore()
 
         when (savedTheme) {
             Theme.LIGHT -> themeLight.isChecked = true
@@ -64,8 +63,8 @@ class NightThemeFragment : BaseFragment(
             when (checkedId) {
                 R.id.themeLight -> setTheme(Theme.LIGHT)
                 R.id.themeDark -> setTheme(Theme.DARK)
-                R.id.themeBattery -> setTheme(Theme.SYSTEM)
-                R.id.themeSystem -> setTheme(Theme.BATTERY)
+                R.id.themeSystem -> setTheme(Theme.SYSTEM)
+                R.id.themeBattery -> setTheme(Theme.BATTERY)
             }
         }
     }

@@ -1,10 +1,15 @@
 package bug.capitulated.whole
 
 import android.app.Application
+import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
+import bug.capitulated.core_common.theme.Theme
 import bug.capitulated.core_room.datasource.roomModule
 import bug.capitulated.core_workmanager.workManagerCoreModule
 import bug.capitulated.feature_main.mainModule
 import bug.capitulated.feature_mviexample.mviExampleModule
+import bug.capitulated.feature_nighttheme.KEY_THEME
+import bug.capitulated.feature_nighttheme.PREFS_NAME
 import bug.capitulated.feature_nighttheme.nightThemeModule
 import bug.capitulated.feature_workmanager.workManagerModule
 import bug.capitulated.whole.navigation.navigationModule
@@ -15,6 +20,10 @@ internal class WholeApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        val sharedPrefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val savedTheme = Theme.themeOfInt(sharedPrefs.getInt(KEY_THEME, Theme.defaultThemeInt))
+        AppCompatDelegate.setDefaultNightMode(savedTheme.toNightMode())
 
         startKoin {
             androidContext(this@WholeApplication)
