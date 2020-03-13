@@ -41,9 +41,9 @@ object ApplicationId {
 
 object CoreModule {
     const val app = ":app"
-
+    
     const val common = ":core_common"
-
+    
     const val room = ":core_room"
     const val workManager = ":core_workmanager"
 }
@@ -66,7 +66,7 @@ object Version {
     val javaVersionString = javaVersion.toString()
     const val kotlinVersion = "1.3.61"
     const val gradleVersion = "3.6.1"
-
+    
     // SDK
     const val compileVersion = 28
     const val minVersion = 21
@@ -81,7 +81,7 @@ object Libraries {
     // Support
     const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
     const val coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
-
+    
     // UI
     const val material = "com.google.android.material:material:$materialVersion"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
@@ -91,14 +91,14 @@ object Libraries {
     const val pagingRx = "androidx.paging:paging-rxjava2-ktx:$pagingVersion"
     const val glide = "com.github.bumptech.glide:glide:$glideVersion"
     const val glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
-
+    
     // Navigation
     const val cicerone = "ru.terrakok.cicerone:cicerone:$ciceroneVersion"
-
+    
     // DI
     const val koin = "org.koin:koin-androidx-scope:$koinVersion"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
-
+    
     // Network
     const val gson = "com.google.code.gson:gson:$gsonVersion"
     const val jsoup = "org.jsoup:jsoup:$jsoupVersion"
@@ -106,20 +106,20 @@ object Libraries {
     const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitRxAdapterVersion"
     const val retrofitXmlConverter = "com.squareup.retrofit2:converter-simplexml:$retrofitXmlConverterVersion"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-
+    
     // Rx
     const val rxJava = "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:$rxBindingVersion"
     const val rxBindingAppcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingVersion"
-
+    
     // Database
     const val room = "androidx.room:room-runtime:$roomVersion"
     const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
     const val roomRx = "androidx.room:room-rxjava2:$roomVersion"
     const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
-
+    
     // Work Manager
     const val workManager = "androidx.work:work-runtime-ktx:$workManagerVersion"
     const val workManagerRxJava = "androidx.work:work-rxjava2:$workManagerVersion"
@@ -135,21 +135,21 @@ object TestLibraries {
     const val archCoreTest = "androidx.arch.core:core-testing:$archCoreTestVersion"
     const val junit = "androidx.test.ext:junit:$androidJunitVersion"
     const val fragmentNav = "androidx.fragment:fragment-testing:$fragmentTestVersion"
-
+    
     // Koin
     const val koin = "org.koin:koin-test:$koinVersion"
-
+    
     // Mockito
     const val mockito = "org.mockito:mockito-core:$mockitoVersion"
-
+    
     // Mockk
     const val mockk = "io.mockk:mockk:$mockkVersion"
     const val mockkAndroid = "io.mockk:mockk-android:$mockkVersion"
     const val mockkWebServer = "com.squareup.okhttp:mockwebserver:$mockkWebserverVersion"
-
+    
     // Database
     const val room = "androidx.room:room-testing:$roomVersion"
-
+    
     // Work Manager
     const val workManager = "androidx.work:work-testing:$workManagerVersion"
 }

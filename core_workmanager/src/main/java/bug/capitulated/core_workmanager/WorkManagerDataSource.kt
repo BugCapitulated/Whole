@@ -6,13 +6,13 @@ import bug.capitulated.core_workmanager.worker.SampleWorker
 import java.util.concurrent.TimeUnit
 
 interface WorkManagerDataSource {
-
+    
     fun startWork()
-
+    
     fun startPeriodicWork()
-
+    
     fun clearAllWorks()
-
+    
 }
 
 
@@ -31,7 +31,7 @@ const val WORKER_TAG = "WORKER_TAG"
 internal class WorkManagerDataSourceImpl(
     private val workManager: WorkManager
 ) : WorkManagerDataSource {
-
+    
     /**
      * Запуск задачи, что выполнится один раз
      */
@@ -44,32 +44,32 @@ internal class WorkManagerDataSourceImpl(
             //.setRequiresBatteryNotLow(true) // Уровень заряда батареи не ниже критического
             //.setRequiresStorageNotLow(true) // Количество свободного пространста не ниже критического
             .build()
-
+        
         // Формирование параметров для передачи их в воркер с типом ключ - значение
         // Ограничение при передачи данных - 10Kb
         val params = workDataOf(WORK_MANAGER_PARAM_1 to "some parameter")
-
+        
         OneTimeWorkRequestBuilder<SampleWorker>()
             //.setInitialDelay(3, TimeUnit.SECONDS) // Delay
             //.setConstraints(constraints) // Условия для запуска задачи
-
+            
             // Установка условий для Result.retry()
             .setBackoffCriteria(
                 BackoffPolicy.LINEAR, // Функция возрастания времени ретрая
                 OneTimeWorkRequest.MIN_BACKOFF_MILLIS, TimeUnit.MILLISECONDS // Время для ретрая
             )
-
+            
             // Передача параметров в воркер
             .setInputData(params)
-
+            
             // Задачи можно группировать по тегам. В дальнейшем по тегу можно прерывать группу задач
             // Также по тегу можно получать статус задачи
             .addTag(WORKER_TAG)
-
+            
             .build()
             .enqueue()
     }
-
+    
     /**
      * Запуск периодической задачи
      *
@@ -85,7 +85,7 @@ internal class WorkManagerDataSourceImpl(
             .build()
             .enqueue()
     }
-
+    
     /**
      * Остановка и перевод задачи в статус CANCELED
      *
@@ -96,18 +96,18 @@ internal class WorkManagerDataSourceImpl(
      */
     override fun clearAllWorks() {
         workManager.cancelAllWork()
-
+        
         //workManager.cancelWorkById()
         //workManager.cancelAllWorkByTag()
         //workManager.cancelUniqueWork()
     }
-
+    
     /**
      * Запуск последовательности задач
      */
     fun startChainingWork() {
         val workRequest = makeSampleOneTimeWorkRequest()
-
+        
         // Запуск трёх задач параллельно, затем двух задач последовательно
         workManager
             .beginWith(listOf(workRequest, workRequest, workRequest))
@@ -115,7 +115,7 @@ internal class WorkManagerDataSourceImpl(
             .then(workRequest)
             .enqueue()
     }
-
+    
     /**
      * enqueueUniqueWork - Запуск именованной задачи, позволяет избегать дублирования в создании задач
      *
@@ -127,33 +127,33 @@ internal class WorkManagerDataSourceImpl(
      */
     fun startUniqueWork() {
         val workRequest = makeSampleOneTimeWorkRequest()
-
+        
         workManager.enqueueUniqueWork(
             "unique work name",
             ExistingWorkPolicy.REPLACE,
             workRequest
         )
     }
-
-
+    
+    
     private fun makeSampleOneTimeWorkRequest(): OneTimeWorkRequest {
         return OneTimeWorkRequestBuilder<SampleWorker>().build()
     }
-
+    
     private fun <T : WorkRequest> T.observe(withResult: WorkInfo.() -> Unit = {}): T {
         workManager.getWorkInfoById(id) {
             "$id: $state".log
-
+            
             if (outputData.keyValueMap.isNotEmpty()) {
                 withResult.invoke(this)
             }
         }
-
+        
         return this
     }
-
+    
     private fun WorkRequest.enqueue() {
         workManager.enqueue(this)
     }
-
+    
 }

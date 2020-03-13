@@ -7,6 +7,6 @@ fun Any?.isNull(callback: () -> Unit): Boolean? {
         callback.invoke()
         return true
     }
-
+    
     return null
 }

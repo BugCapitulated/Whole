@@ -9,7 +9,7 @@ val navigationModule = module {
     factory { (activity: FragmentActivity, containerId: Int) ->
         SupportAppNavigator(activity, containerId)
     }
-
+    
     single { CustomRouter() }
     single { Cicerone.create(get<CustomRouter>()) }
     single { get<Cicerone<CustomRouter>>().navigatorHolder }

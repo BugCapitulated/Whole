@@ -8,7 +8,7 @@
         <!--<item name="android:navigationBarColor">@android:color/transparent</item>-->
 
         <!-- Установка анимации при уничтожении и создании активити -->
-<!--        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
+        <!--<item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
     </style>
 
     <style name="WindowAnimationTransition">

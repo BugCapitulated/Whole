@@ -26,7 +26,7 @@ fun WorkManager.getWorkInfosByTagObservable(tag: String): Observable<List<WorkIn
  * @see androidx.work.WorkManager.getWorkInfosByTagLiveData по тегу
  * и мапиинг в (List<WorkInfo>) -> Unit
  */
-internal fun WorkManager.getWorkInfosByTag(tag: String, callback: List<WorkInfo>.() -> Unit){
+internal fun WorkManager.getWorkInfosByTag(tag: String, callback: List<WorkInfo>.() -> Unit) {
     getWorkInfosByTagObservable(tag)
         .doOnNext(callback::invoke)
         .subscribe()

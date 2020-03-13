@@ -18,38 +18,38 @@ const val KEY_THEME = "KEY_THEME"
 class NightThemeFragment : BaseFragment(
     layoutId = R.layout.nighttheme_fragment
 ) {
-
+    
     /*
       TODO:
        Запускать анимацию WindowAnimationTransition только при переключении темы
        Вынести префы в отдельный модуль
     */
-
+    
     private val sharedPrefs by lazy {
         activity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     }
-
+    
     private var savedTheme: Theme
         get() = themeOfInt(sharedPrefs.getInt(KEY_THEME, defaultThemeInt))
         set(value) {
             sharedPrefs.edit().putInt(KEY_THEME, value.toInt()).apply()
         }
-
-
+    
+    
     init {
         // Узнаём текущую тему
         //AppCompatDelegate.getDefaultNightMode()
     }
-
-
+    
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initThemeListener()
         initTheme()
     }
-
+    
     private fun initTheme() {
         themeSystem.isVisible = is28orMore()
-
+        
         when (savedTheme) {
             Theme.LIGHT -> themeLight.isChecked = true
             Theme.DARK -> themeDark.isChecked = true
@@ -57,7 +57,7 @@ class NightThemeFragment : BaseFragment(
             Theme.BATTERY -> themeBattery.isChecked = true
         }
     }
-
+    
     private fun initThemeListener() {
         themeGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
@@ -68,13 +68,13 @@ class NightThemeFragment : BaseFragment(
             }
         }
     }
-
+    
     private fun setTheme(theme: Theme) {
         // Установка анимации при уничтожении и создании активити из кода
         //window.attributes.windowAnimations = R.style.WindowAnimationTransition
-
+        
         savedTheme = theme
         setDefaultNightMode(theme.toNightMode())
     }
-
+    
 }

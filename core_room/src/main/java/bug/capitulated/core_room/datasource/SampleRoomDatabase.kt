@@ -12,11 +12,11 @@ import bug.capitulated.core_room.datasource.entity.SampleEntity
     entities = [SampleEntity::class]
 )
 internal abstract class SampleRoomDatabase : RoomDatabase() {
-
+    
     abstract fun getTitleDao(): SampleDao
-
+    
     companion object {
-
+        
         @Synchronized
         fun createDatabase(
             appContext: Context,
@@ -26,7 +26,7 @@ internal abstract class SampleRoomDatabase : RoomDatabase() {
                 .fallbackToDestructiveMigration() // Attention
                 .build()
         }
-
+        
     }
-
+    
 }

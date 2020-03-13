@@ -9,11 +9,11 @@ import io.reactivex.Single
 
 @Dao
 internal interface SampleDao : BaseDao<SampleEntity> {
-
+    
     @Query("SELECT * FROM SampleEntity")
     fun getSamples(): Observable<List<SampleEntity>>
-
+    
     @Query("SELECT * FROM SampleEntity WHERE id = (:id)")
     fun getSample(id: String): Single<SampleEntity>
-
+    
 }

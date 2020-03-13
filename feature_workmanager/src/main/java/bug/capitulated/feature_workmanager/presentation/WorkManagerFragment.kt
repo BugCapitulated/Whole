@@ -14,30 +14,30 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 class WorkManagerFragment : MviFragment<WorkManagerIntent, WorkManagerViewState, Nothing>(
     layoutId = R.layout.workmanager_fragment
 ) {
-
+    
     private val adapter = WorkManagerAdapter()
-
-
+    
+    
     override fun provideViewModel(): WorkManagerViewModel = getViewModel()
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recycler_view.init(adapter)
-
+        
         one_time_work.setOnClickListener {
             postIntent(WorkManagerIntent.StartWork)
         }
-
+        
         periodic_work.setOnClickListener {
             postIntent(WorkManagerIntent.StartPeriodicWork)
         }
-
+        
         clearAllWork.setOnClickListener {
             postIntent(WorkManagerIntent.ClearAllWorks)
         }
     }
-
+    
     override fun render(state: WorkManagerViewState) {
         adapter.items = state.workInfos
     }
-
+    
 }

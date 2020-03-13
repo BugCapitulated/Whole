@@ -17,24 +17,24 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 internal class WholeApplication : Application() {
-
+    
     override fun onCreate() {
         super.onCreate()
-
+        
         val sharedPrefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val savedTheme = Theme.themeOfInt(sharedPrefs.getInt(KEY_THEME, Theme.defaultThemeInt))
         AppCompatDelegate.setDefaultNightMode(savedTheme.toNightMode())
-
+        
         startKoin {
             androidContext(this@WholeApplication)
-
+            
             modules(
                 listOf(
                     navigationModule,
-
+                    
                     roomModule,
                     workManagerCoreModule,
-
+                    
                     mainModule,
                     mviExampleModule,
                     workManagerModule,
@@ -43,5 +43,5 @@ internal class WholeApplication : Application() {
             )
         }
     }
-
+    
 }

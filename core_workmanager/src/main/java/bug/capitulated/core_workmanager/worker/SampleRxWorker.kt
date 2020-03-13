@@ -10,11 +10,11 @@ internal class SampleRxWorker(
     context: Context,
     workerParameters: WorkerParameters
 ) : RxWorker(context, workerParameters) {
-
+    
     override fun createWork(): Single<Result> {
         return Single.just(Unit)
             .delay(5, TimeUnit.SECONDS)
             .map { Result.success() }
     }
-
+    
 }

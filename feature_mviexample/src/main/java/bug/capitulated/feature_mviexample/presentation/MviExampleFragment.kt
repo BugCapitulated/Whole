@@ -20,34 +20,34 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
     layoutId = R.layout.mviexample_fragment
 ), OnSampleClickListener {
-
+    
     private val adapter = SampleAdapter(this)
-
-
+    
+    
     override fun provideViewModel(): MviExampleViewModel = getViewModel()
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         toolbar.init(enableArrowUp = false)
         recycler_view.init(adapter)
-
+        
         savedInstanceState.isNull { postIntent(MviExampleIntent.LoadData) }
-        fab.setOnClickListener{ postIntent(MviExampleIntent.AddSample) }
+        fab.setOnClickListener { postIntent(MviExampleIntent.AddSample) }
     }
-
+    
     override fun render(state: MviExampleViewState) {
         progressbar.isVisible = state.isLoading
         adapter.items = state.items
     }
-
+    
     override fun onSubscriptionReceived(subscription: MviExampleSubscription) {
         when (subscription) {
             is MviExampleSubscription.LoadDataFailed -> toast("Ошибка при загрузке данных")
         }
     }
-
-
+    
+    
     override fun onSampleClick(item: SampleEntity) {
         toast("Item " + item.id.toString() + " clicked")
     }
-
+    
 }

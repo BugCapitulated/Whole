@@ -8,11 +8,11 @@ import bug.capitulated.feature_mviexample.R
 internal class SampleAdapter(
     private val onClickListener: OnSampleClickListener
 ) : BaseAdapter<SampleEntity, SampleViewHolder>() {
-
+    
     override fun onLayoutRequested(viewType: Int) = R.layout.mviexample_item_list
-
+    
     override fun onCreateViewHolder(view: View, viewType: Int) = SampleViewHolder(view, ::onClick)
-
+    
     private fun onClick(position: Int) = onClickListener.onSampleClick(items[position])
-
+    
 }

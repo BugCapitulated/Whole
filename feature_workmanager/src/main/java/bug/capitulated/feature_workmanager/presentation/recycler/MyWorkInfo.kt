@@ -11,9 +11,9 @@ data class MyWorkInfo(
     val time: Long,
     val tags: Set<String>
 ) : KeyEntity<String> {
-
+    
     override val id: String by lazy(uuid::toString)
-
+    
 }
 
 internal fun List<WorkInfo>.toMyWorkInfos() = map {

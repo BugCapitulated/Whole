@@ -4,19 +4,19 @@ import androidx.appcompat.app.AppCompatDelegate
 import bug.capitulated.core_common.util.is26orMore
 
 enum class Theme {
-
+    
     LIGHT,
     DARK,
     SYSTEM,
     BATTERY;
-
+    
     fun toInt() = when (this) {
         LIGHT -> 0
         DARK -> 1
         SYSTEM -> 2
         BATTERY -> 3
     }
-
+    
     @AppCompatDelegate.NightMode
     fun toNightMode() = when (this) {
         LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
@@ -24,14 +24,14 @@ enum class Theme {
         SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
         BATTERY -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
     }
-
+    
     companion object {
-
+        
         val defaultTheme: Theme
             get() = if (is26orMore()) SYSTEM else BATTERY
-
+        
         val defaultThemeInt: Int get() = defaultTheme.toInt()
-
+        
         fun themeOfInt(value: Int) = when (value) {
             0 -> LIGHT
             1 -> DARK
@@ -39,7 +39,7 @@ enum class Theme {
             3 -> BATTERY
             else -> throw IllegalArgumentException()
         }
-
+        
     }
-
+    
 }

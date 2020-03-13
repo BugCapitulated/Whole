@@ -10,13 +10,13 @@ internal class SampleViewHolder(
     containerView: View,
     private val onLayoutClick: (Int) -> Unit
 ) : BaseViewHolder<SampleEntity>(containerView) {
-
+    
     init {
         layout.setOnClickListener { approveClick { onLayoutClick.invoke(adapterPosition) } }
     }
-
+    
     override fun bind(item: SampleEntity) {
         title.text = item.id.toString()
     }
-
+    
 }

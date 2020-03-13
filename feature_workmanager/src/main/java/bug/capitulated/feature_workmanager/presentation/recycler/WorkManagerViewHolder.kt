@@ -8,11 +8,11 @@ import kotlinx.android.synthetic.main.workmanager_item_list.*
 internal class WorkManagerViewHolder(
     containerView: View
 ) : BaseViewHolder<MyWorkInfo>(containerView) {
-
+    
     @SuppressLint("SetTextI18n")
     override fun bind(item: MyWorkInfo) {
         title.text = item.uuid.toString()
         state.text = "${item.state} ${item.time}"
     }
-
+    
 }

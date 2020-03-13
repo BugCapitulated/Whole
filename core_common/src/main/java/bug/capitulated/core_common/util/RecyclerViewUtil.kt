@@ -22,6 +22,6 @@ fun RecyclerView.ViewHolder.approveClick(callback: (position: Int) -> Unit): Boo
         callback.invoke(adapterPosition)
         return true
     }
-
+    
     return false
 }

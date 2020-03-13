@@ -16,25 +16,25 @@ class WorkManagerViewModel(
 ) : MviViewModel<WorkManagerIntent, WorkManagerAction, WorkManagerViewState, Nothing>(
     WorkManagerViewState()
 ) {
-
+    
     init {
         postIntent(WorkManagerIntent.Initialize)
     }
-
+    
     override fun act(state: WorkManagerViewState, intent: WorkManagerIntent) = when (intent) {
         WorkManagerIntent.Initialize -> workManager.getWorkInfosByTagObservable(WORKER_TAG)
             .map(WorkManagerAction::WorkInfosReceived)
-
+        
         WorkManagerIntent.StartWork -> interactor.startWork()
             .andThen(super.act(state, intent))
-
+        
         WorkManagerIntent.StartPeriodicWork -> interactor.startPeriodicWork()
             .andThen(super.act(state, intent))
-
+        
         WorkManagerIntent.ClearAllWorks -> interactor.clearAllWorks()
             .andThen(super.act(state, intent))
     }
-
+    
     override fun reduce(oldState: WorkManagerViewState, action: WorkManagerAction) = when (action) {
         is WorkManagerAction.WorkInfosReceived -> oldState.copy(
             workInfos = action.value
@@ -42,5 +42,5 @@ class WorkManagerViewModel(
                 .sortedByDescending { it.time }
         )
     }
-
+    
 }
