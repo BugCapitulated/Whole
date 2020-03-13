@@ -28,7 +28,7 @@ enum class Theme {
     companion object {
         
         val defaultTheme: Theme
-            get() = if (is26orMore()) SYSTEM else BATTERY
+            get() = LIGHT
         
         val defaultThemeInt: Int get() = defaultTheme.toInt()
         
