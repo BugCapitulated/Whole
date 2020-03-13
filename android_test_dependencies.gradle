@@ -15,6 +15,9 @@ dependencies {
     // Koin
     androidTestImplementation TestLibraries.koin
 
+    // Mockito
+    testImplementation TestLibraries.mockito
+
     // Mockk
     androidTestImplementation TestLibraries.mockk
     testImplementation TestLibraries.mockk

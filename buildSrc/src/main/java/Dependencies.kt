@@ -1,12 +1,12 @@
 import Version.kotlinVersion
 import org.gradle.api.JavaVersion
 
-private const val appCompatVersion = "1.1.0"
-private const val coreKtxVersion = "1.1.0"
-private const val materialVersion = "1.2.0-alpha01"
+private const val appCompatVersion = "1.0.0"
+private const val coreKtxVersion = "1.2.0"
+private const val materialVersion = "1.1.0"
 private const val constraintLayoutVersion = "1.1.3"
-private const val recyclerVersion = "1.0.0"
-private const val viewpager2Version = "1.0.0-rc01"
+private const val recyclerVersion = "1.1.0"
+private const val viewpager2Version = "1.0.0"
 private const val pagingVersion = "2.1.0"
 private const val glideVersion = "4.9.0"
 private const val ciceroneVersion = "5.0.0"
@@ -18,21 +18,22 @@ private const val retrofitRxAdapterVersion = "2.4.0"
 private const val retrofitXmlConverterVersion = "2.3.0"
 private const val rxJavaVersion = "2.2.7"
 private const val rxKotlinVersion = "2.3.0"
-private const val rxAndroidVersion = "2.1.0"
+private const val rxAndroidVersion = "2.1.1"
 private const val rxBindingVersion = "3.0.0-alpha2"
-private const val roomVersion = "2.2.0"
+private const val roomVersion = "2.2.4"
 private const val stethoVersion = "1.5.0"
-private const val workManagerVersion = "2.2.0"
+private const val workManagerVersion = "2.3.3"
 private const val rxWorkManagerVersios = "1.0.0"
 
-private const val junitVersion = "4.12"
-private const val androidTestRunnerVersion = "1.3.0-alpha02"
-private const val espressoCoreVersion = "3.3.0-alpha02"
+private const val junitVersion = "4.13"
+private const val androidTestRunnerVersion = "1.3.0-alpha04"
+private const val espressoCoreVersion = "3.3.0-alpha04"
+private const val mockitoVersion = "2.28.2"
 private const val mockkVersion = "1.9.2"
 private const val mockkWebserverVersion = "2.7.5"
 private const val archCoreTestVersion = "2.1.0"
 private const val androidJunitVersion = "1.1.1"
-private const val fragmentTestVersion = "1.2.0-rc02"
+private const val fragmentTestVersion = "1.2.0"
 
 object ApplicationId {
     const val id = "bug.capitulated.whole"
@@ -63,8 +64,8 @@ object Version {
     // Language
     val javaVersion = JavaVersion.VERSION_1_8
     val javaVersionString = javaVersion.toString()
-    const val kotlinVersion = "1.3.50"
-    const val gradleVersion = "3.5.2"
+    const val kotlinVersion = "1.3.61"
+    const val gradleVersion = "3.6.1"
 
     // SDK
     const val compileVersion = 28
@@ -138,6 +139,9 @@ object TestLibraries {
     // Koin
     const val koin = "org.koin:koin-test:$koinVersion"
 
+    // Mockito
+    const val mockito = "org.mockito:mockito-core:$mockitoVersion"
+
     // Mockk
     const val mockk = "io.mockk:mockk:$mockkVersion"
     const val mockkAndroid = "io.mockk:mockk-android:$mockkVersion"
@@ -149,3 +153,56 @@ object TestLibraries {
     // Work Manager
     const val workManager = "androidx.work:work-testing:$workManagerVersion"
 }
+
+
+/*
+Чтобы проверить библеотеки на наличие новых версий вставьте следующие строки в все модули
+(те либы, что используются в модуля чекнутся и скажут вам пришла ли обнова)
+
+implementation "androidx.appcompat:appcompat:${}"
+implementation "androidx.core:core-ktx:${}"
+implementation "com.google.android.material:material:${}"
+implementation "androidx.constraintlayout:constraintlayout:${}"
+implementation "androidx.recyclerview:recyclerview:${}"
+implementation "androidx.viewpager2:viewpager2:${}"
+implementation "androidx.paging:paging-runtime-ktx:${}"
+implementation "androidx.paging:paging-rxjava2-ktx:${}"
+implementation "com.github.bumptech.glide:glide:${}"
+implementation "com.github.bumptech.glide:compiler:${}"
+implementation "ru.terrakok.cicerone:cicerone:${}"
+implementation "org.koin:koin-androidx-scope:${}"
+implementation "org.koin:koin-androidx-viewmodel:${}"
+implementation "com.google.code.gson:gson:${}"
+implementation "org.jsoup:jsoup:${}"
+implementation "com.squareup.retrofit2:retrofit:${}"
+implementation "com.squareup.retrofit2:adapter-rxjava2:${}"
+implementation "com.squareup.retrofit2:converter-simplexml:${}"
+implementation "com.squareup.retrofit2:converter-gson:${}"
+implementation "io.reactivex.rxjava2:rxjava:${}"
+implementation "io.reactivex.rxjava2:rxkotlin:${}"
+implementation "io.reactivex.rxjava2:rxandroid:${}"
+implementation "com.jakewharton.rxbinding3:rxbinding:${}"
+implementation "com.jakewharton.rxbinding3:rxbinding-appcompat:${}"
+implementation "androidx.room:room-runtime:${}"
+implementation "androidx.room:room-compiler:${}"
+implementation "androidx.room:room-rxjava2:${}"
+implementation "com.facebook.stetho:stetho:${}"
+implementation "androidx.work:work-runtime-ktx:${}"
+implementation "androidx.work:work-rxjava2:${}"
+implementation "com.github.PaulinaSadowska:RxWorkManagerObservers:${}"
+implementation "junit:junit:${}"
+implementation "org.jetbrains.kotlin:kotlin-test-junit:${}"
+implementation "androidx.test:runner:${}"
+implementation "androidx.test.espresso:espresso-core:${}"
+implementation "androidx.test.espresso:espresso-contrib:${}"
+implementation "androidx.arch.core:core-testing:${}"
+implementation "androidx.test.ext:junit:${}"
+implementation "androidx.fragment:fragment-testing:${}"
+implementation "org.koin:koin-test:${}"
+implementation "org.mockito:mockito-core:${}"
+implementation "io.mockk:mockk:${}"
+implementation "io.mockk:mockk-android:${}"
+implementation "com.squareup.okhttp:mockwebserver:${}"
+implementation "androidx.room:room-testing:${}"
+implementation "androidx.work:work-testing:${}"
+ */
