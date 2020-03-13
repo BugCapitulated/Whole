@@ -50,6 +50,7 @@ dependencies {
     implementation Libraries.material
     implementation Libraries.constraintLayout
     implementation Libraries.recycler
+    implementation Libraries.recyclerHannesDorfmann
 
     // DI
     implementation Libraries.koin

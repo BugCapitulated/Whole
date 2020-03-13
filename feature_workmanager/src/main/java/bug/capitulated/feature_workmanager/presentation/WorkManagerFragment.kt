@@ -7,7 +7,7 @@ import bug.capitulated.core_common.util.init
 import bug.capitulated.feature_workmanager.R
 import bug.capitulated.feature_workmanager.presentation.mvi.WorkManagerIntent
 import bug.capitulated.feature_workmanager.presentation.mvi.WorkManagerViewState
-import bug.capitulated.feature_workmanager.presentation.recycler.WorkManagerAdapter
+import bug.capitulated.feature_workmanager.presentation.recycler.workManagerAdapter
 import kotlinx.android.synthetic.main.workmanager_fragment.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -15,7 +15,7 @@ class WorkManagerFragment : MviFragment<WorkManagerIntent, WorkManagerViewState,
     layoutId = R.layout.workmanager_fragment
 ) {
     
-    private val adapter = WorkManagerAdapter()
+    private val adapter = workManagerAdapter()
     
     
     override fun provideViewModel(): WorkManagerViewModel = getViewModel()

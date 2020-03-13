@@ -6,6 +6,7 @@ private const val coreKtxVersion = "1.2.0"
 private const val materialVersion = "1.1.0"
 private const val constraintLayoutVersion = "1.1.3"
 private const val recyclerVersion = "1.1.0"
+private const val recyclerHannesDorfmannVersion = "4.2.0"
 private const val viewpager2Version = "1.0.0"
 private const val pagingVersion = "2.1.0"
 private const val glideVersion = "4.9.0"
@@ -24,6 +25,8 @@ private const val roomVersion = "2.2.4"
 private const val stethoVersion = "1.5.0"
 private const val workManagerVersion = "2.3.3"
 private const val rxWorkManagerVersios = "1.0.0"
+
+private const val chuckVersion = "1.1.0"
 
 private const val junitVersion = "4.13"
 private const val androidTestRunnerVersion = "1.3.0-alpha04"
@@ -86,6 +89,7 @@ object Libraries {
     const val material = "com.google.android.material:material:$materialVersion"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     const val recycler = "androidx.recyclerview:recyclerview:$recyclerVersion"
+    const val recyclerHannesDorfmann = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:$recyclerHannesDorfmannVersion"
     const val viewpager2 = "androidx.viewpager2:viewpager2:$viewpager2Version"
     const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
     const val pagingRx = "androidx.paging:paging-rxjava2-ktx:$pagingVersion"
@@ -126,6 +130,10 @@ object Libraries {
     const val rxWorkManager = "com.github.PaulinaSadowska:RxWorkManagerObservers:$rxWorkManagerVersios"
 }
 
+object DebugLibraries {
+    const val chuck = "com.readystatesoftware.chuck:library:$chuckVersion"
+}
+
 object TestLibraries {
     const val testJunit = "junit:junit:$junitVersion"
     const val kotlinTestJunit = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
@@ -164,6 +172,7 @@ implementation "androidx.core:core-ktx:${}"
 implementation "com.google.android.material:material:${}"
 implementation "androidx.constraintlayout:constraintlayout:${}"
 implementation "androidx.recyclerview:recyclerview:${}"
+implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:${}"
 implementation "androidx.viewpager2:viewpager2:${}"
 implementation "androidx.paging:paging-runtime-ktx:${}"
 implementation "androidx.paging:paging-rxjava2-ktx:${}"

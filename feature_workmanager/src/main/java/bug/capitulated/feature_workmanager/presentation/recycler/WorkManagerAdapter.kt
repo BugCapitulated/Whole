@@ -1,13 +1,16 @@
 package bug.capitulated.feature_workmanager.presentation.recycler
 
-import android.view.View
-import bug.capitulated.core_common.recycler.BaseAdapter
+import android.annotation.SuppressLint
+import bug.capitulated.core_common.recycler.createAdapter
 import bug.capitulated.feature_workmanager.R
+import kotlinx.android.synthetic.main.workmanager_item_list.*
 
-internal class WorkManagerAdapter : BaseAdapter<MyWorkInfo, WorkManagerViewHolder>() {
+@SuppressLint("SetTextI18n")
+internal fun workManagerAdapter() = createAdapter<MyWorkInfo>(R.layout.workmanager_item_list) {
     
-    override fun onLayoutRequested(viewType: Int) = R.layout.workmanager_item_list
-    
-    override fun onCreateViewHolder(view: View, viewType: Int) = WorkManagerViewHolder(view)
+    bind {
+        title.text = item.uuid.toString()
+        state.text = "${item.state} ${item.time}"
+    }
     
 }

@@ -2,7 +2,7 @@ package bug.capitulated.core_common.recycler
 
 import androidx.recyclerview.widget.DiffUtil
 
-class EntityDiffCallback<Item, PrimaryKey>(
+open class EntityDiffCallback<Item, PrimaryKey>(
     private val oldItems: List<Item>,
     private val newItems: List<Item>,
     private val identifierReceiver: (Item) -> PrimaryKey
@@ -22,5 +22,14 @@ class EntityDiffCallback<Item, PrimaryKey>(
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return oldItems[oldItemPosition] == newItems[newItemPosition]
     }
+    
+}
+
+
+class DiffItemCallback<T : KeyEntity<*>> : DiffUtil.ItemCallback<T>() {
+    
+    override fun areItemsTheSame(oldItem: T, newItem: T) = oldItem.id == newItem.id
+    
+    override fun areContentsTheSame(oldItem: T, newItem: T) = oldItem == newItem
     
 }

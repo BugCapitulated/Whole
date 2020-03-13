@@ -12,16 +12,15 @@ import bug.capitulated.feature_mviexample.R
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleIntent
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleSubscription
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleViewState
-import bug.capitulated.feature_mviexample.presentation.recycler.OnSampleClickListener
-import bug.capitulated.feature_mviexample.presentation.recycler.SampleAdapter
+import bug.capitulated.feature_mviexample.presentation.recycler.sampleAdapter
 import kotlinx.android.synthetic.main.mviexample_fragment.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
     layoutId = R.layout.mviexample_fragment
-), OnSampleClickListener {
+) {
     
-    private val adapter = SampleAdapter(this)
+    private val adapter = sampleAdapter(::onSampleClick)
     
     
     override fun provideViewModel(): MviExampleViewModel = getViewModel()
@@ -46,7 +45,7 @@ class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, Mv
     }
     
     
-    override fun onSampleClick(item: SampleEntity) {
+    private fun onSampleClick(item: SampleEntity) {
         toast("Item " + item.id.toString() + " clicked")
     }
     
