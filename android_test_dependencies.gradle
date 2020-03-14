@@ -9,20 +9,17 @@ dependencies {
     testImplementation TestLibraries.testJunit
     testImplementation TestLibraries.jupiterApi
     testImplementation TestLibraries.jupiterParams
+    testImplementation TestLibraries.robolectric
 
     // Android test
     androidTestImplementation TestLibraries.androidTestRunner
-    androidTestImplementation TestLibraries.espresso
+    androidTestImplementation TestLibraries.androidTestExt
 
     // Koin
     androidTestImplementation TestLibraries.koin
 
     // Mockito
     testImplementation TestLibraries.mockito
-
-    // Mockk
-    androidTestImplementation TestLibraries.mockk
-    testImplementation TestLibraries.mockk
 
     // Database
     androidTestImplementation TestLibraries.room
