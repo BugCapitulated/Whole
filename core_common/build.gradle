@@ -1,2 +1,3 @@
 apply plugin: 'com.android.library'
 apply from: '../android_commons.gradle'
+apply from: '../android_test_dependencies.gradle'

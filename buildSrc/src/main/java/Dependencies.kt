@@ -29,6 +29,7 @@ private const val rxWorkManagerVersios = "1.0.0"
 private const val chuckVersion = "1.1.0"
 
 private const val junitVersion = "4.13"
+private const val jupiterVersion = "5.5.0"
 private const val androidTestRunnerVersion = "1.3.0-alpha04"
 private const val espressoCoreVersion = "3.3.0-alpha04"
 private const val mockitoVersion = "2.28.2"
@@ -136,6 +137,8 @@ object DebugLibraries {
 
 object TestLibraries {
     const val testJunit = "junit:junit:$junitVersion"
+    const val jupiterApi = "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
+    const val jupiterParams = "org.junit.jupiter:junit-jupiter-params:$jupiterVersion"
     const val kotlinTestJunit = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     const val androidTestRunner = "androidx.test:runner:$androidTestRunnerVersion"
     const val espresso = "androidx.test.espresso:espresso-core:$espressoCoreVersion"
