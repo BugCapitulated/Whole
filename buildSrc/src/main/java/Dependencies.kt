@@ -74,9 +74,9 @@ object Version {
     const val gradleVersion = "3.6.1"
     
     // SDK
-    const val compileVersion = 28
     const val minVersion = 21
-    const val targetVersion = 28
+    const val targetVersion = 29
+    const val compileVersion = 29
 }
 
 object Kotlin {
