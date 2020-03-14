@@ -1,6 +1,7 @@
 package bug.capitulated.core_common.mvi
 
 import androidx.lifecycle.ViewModel
+import bug.capitulated.core_common.util.toObservable
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -29,7 +30,7 @@ abstract class MviViewModel<Intent : Any, Action : Any, State : Any, Subscriptio
         get() = subscriptionSubject
     
     val state: ObservableSource<State>
-        get() = stateSubject
+        get() = stateSubject.distinctUntilChanged()
     
     private val intentsSubject = PublishSubject.create<Intent>()
     private val subscriptionSubject = PublishSubject.create<Subscription>()
@@ -46,16 +47,16 @@ abstract class MviViewModel<Intent : Any, Action : Any, State : Any, Subscriptio
             .flatWithLatestFrom(state, ::actWithSchedulers)
             .withLatestFrom(state, ::onActionReceived)
             .subscribeBy(onNext = stateSubject::onNext)
+        
+//        disposable += state.toObservable()
+//            .doOnNext(::println)
+//            .subscribe()
     }
     
     override fun onCleared() {
         super.onCleared()
         disposable.clear()
-        
-        flows.apply {
-            map { it.value.dispose() }
-            clear()
-        }
+        clearFlows()
     }
     
     
@@ -83,11 +84,6 @@ abstract class MviViewModel<Intent : Any, Action : Any, State : Any, Subscriptio
      */
     protected open fun publishSubscription(action: Action, state: State): Subscription? = null
     
-    
-    private fun actWithSchedulers(intent: Intent, state: State) = act(state, intent)
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-    
     /**
      * Данная функция позволяет подписываться на один и тот же стрим по несколько раз,
      * избегая множественные подписки, она будет одна
@@ -106,19 +102,33 @@ abstract class MviViewModel<Intent : Any, Action : Any, State : Any, Subscriptio
         return if (isFlowLaunched) Observable.empty() else flow
     }
     
-    private fun onActionReceived(action: Action, oldState: State): State {
-        val newState = reduce(oldState, action)
-        val subscription = publishSubscription(action, newState)
-        
-        subscription?.let { subscriptionSubject.onNext(it) }
-        return newState
-    }
     
     private inline fun <T, U, R> Observable<T>.flatWithLatestFrom(
         other: ObservableSource<U>,
         crossinline combiner: (T, U) -> ObservableSource<out R>
     ): Observable<R> {
         return withLatestFrom(other, combiner).flatMap { it }
+    }
+    
+    private fun actWithSchedulers(intent: Intent, state: State): Observable<out Action> {
+        return act(state, intent)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+    
+    private fun onActionReceived(action: Action, oldState: State): State {
+        val newState = reduce(oldState, action)
+        val subscription = publishSubscription(action, newState)
+        
+        subscription?.let(subscriptionSubject::onNext)
+        return newState
+    }
+    
+    private fun clearFlows() {
+        flows.apply {
+            map { it.value.dispose() }
+            clear()
+        }
     }
     
 }

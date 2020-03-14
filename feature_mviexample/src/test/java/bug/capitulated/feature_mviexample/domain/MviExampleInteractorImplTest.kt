@@ -1,7 +1,7 @@
 package bug.capitulated.feature_mviexample.domain
 
 import bug.capitulated.core_common.util.toObservable
-import bug.capitulated.core_room.datasource.entity.SampleEntity
+import bug.capitulated.feature_mviexample.SampleEntityTestData
 import bug.capitulated.feature_mviexample.data.MviExampleRepository
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -36,18 +36,5 @@ internal class MviExampleInteractorImplTest {
             .assertNoErrors()
             .assertValue { it == data.items }
     }
-
-
-    @Suppress("UNUSED")
-    internal enum class SampleEntityTestData(
-        val items: List<SampleEntity>
-    ) {
-
-        EMPTY_LIST(emptyList()),
-        LIST_WITH_ONE_ELEMENT(listOf(SampleEntity(0))),
-        LIST_WITH_SEVERAL_ELEMENTS(listOf(SampleEntity(0), SampleEntity(1), SampleEntity(2))),
-
-    }
-
 
 }
