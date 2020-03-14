@@ -1,18 +1,31 @@
 package bug.capitulated.feature_workmanager.domain
 
+import bug.capitulated.feature_workmanager.data.WorkManagerRepository
 import io.reactivex.Completable
 
-class WorkManagerInteractor(private val repository: WorkManagerRepository) {
+interface WorkManagerInteractor {
     
-    fun startWork() = Completable.fromAction {
+    fun startWork(): Completable
+    
+    fun startPeriodicWork(): Completable
+    
+    fun clearAllWorks(): Completable
+    
+}
+
+internal class WorkManagerInteractorImpl(
+    private val repository: WorkManagerRepository
+) : WorkManagerInteractor {
+    
+    override fun startWork() = Completable.fromAction {
         repository.startWork()
     }
     
-    fun startPeriodicWork() = Completable.fromAction {
+    override fun startPeriodicWork() = Completable.fromAction {
         repository.startPeriodicWork()
     }
     
-    fun clearAllWorks() = Completable.fromAction {
+    override fun clearAllWorks() = Completable.fromAction {
         repository.clearAllWorks()
     }
     

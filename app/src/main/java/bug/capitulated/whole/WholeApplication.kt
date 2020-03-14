@@ -16,15 +16,21 @@ import bug.capitulated.whole.navigation.navigationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-internal class WholeApplication : Application() {
+class WholeApplication : Application() {
     
     override fun onCreate() {
         super.onCreate()
-        
+        initCurrentTheme()
+        initKoin()
+    }
+    
+    private fun initCurrentTheme() {
         val sharedPrefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val savedTheme = Theme.themeOfInt(sharedPrefs.getInt(KEY_THEME, Theme.defaultThemeInt))
         AppCompatDelegate.setDefaultNightMode(savedTheme.toNightMode())
-        
+    }
+    
+    private fun initKoin() {
         startKoin {
             androidContext(this@WholeApplication)
             

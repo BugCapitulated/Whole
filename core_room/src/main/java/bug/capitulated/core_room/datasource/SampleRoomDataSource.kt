@@ -12,7 +12,6 @@ interface SampleRoomDataSource {
     
 }
 
-
 internal class SampleRoomDataSourceImpl(
     private val sampleDao: SampleDao
 ) : SampleRoomDataSource {

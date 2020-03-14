@@ -71,8 +71,7 @@ abstract class MviViewModel<Intent : Any, Action : Any, State : Any, Subscriptio
      * Далее, на основе интента вызывается какая-то кастомная логика.
      * После получения результата от логики отправляем [Action]
      */
-    protected open fun act(state: State, intent: Intent): Observable<out Action> =
-        Observable.empty()
+    protected open fun act(state: State, intent: Intent): Observable<out Action> = Observable.empty()
     
     /**
      * Принимает [Action], изменяет на его основе [State] и отдаёт его
