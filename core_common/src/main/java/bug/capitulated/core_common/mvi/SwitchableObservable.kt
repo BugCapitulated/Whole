@@ -8,14 +8,13 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
 internal fun <T : Any> Observable<T>.switchSource(source: Observable<T>): Observable<T> =
-    if (this is SwitchableObservable<T>) this.apply { switchSourceObservable(source) }
+    if (this is SwitchableObservable<T>) apply(::switchSourceObservable)
     else from(source)
 
-internal fun <T : Any> from(source: Observable<T>) = SwitchableObservable(source)
+internal fun <T : Any> from(source: Observable<T>): SwitchableObservable<T> = SwitchableObservable(source)
 
-internal class SwitchableObservable<T : Any> internal constructor(
-    private var source: Observable<T>
-) : Observable<T>() {
+
+internal class SwitchableObservable<T : Any>(private var source: Observable<T>) : Observable<T>() {
     
     private val disposable = CompositeDisposable()
     
@@ -33,11 +32,10 @@ internal class SwitchableObservable<T : Any> internal constructor(
         updateSubscription()
     }
     
-    fun dispose() = disposable.dispose()
+    fun dispose(): Unit = disposable.dispose()
     
     private fun updateSubscription() {
         disposable.clear()
-        
         if (observer == null) return
         
         disposable += source

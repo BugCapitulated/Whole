@@ -1,5 +1,6 @@
 package bug.capitulated.core_common.mvi
 
+import androidx.annotation.CheckResult
 import androidx.annotation.LayoutRes
 import androidx.annotation.MenuRes
 import bug.capitulated.core_common.base.BaseFragment
@@ -18,6 +19,7 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
     @LayoutRes layoutId: Int,
     @MenuRes menuResource: Int? = null,
     hasOptionMenu: Boolean = true,
+    
     private val initialIntent: Intent? = null
 ) : BaseFragment(layoutId, menuResource, hasOptionMenu) {
     
@@ -26,7 +28,7 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
     
     private var _currentState: State? = null
     
-    private val viewModel by lazy { provideViewModel() }
+    private val viewModel by lazy(::provideViewModel)
     
     private val mviDisposable = CompositeDisposable()
     
@@ -38,11 +40,8 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
             viewModel.state bindTo ::onStateReceived,
             viewModel.subscription bindTo ::onSubscriptionReceived
         )
-    }
-    
-    override fun onResume() {
-        super.onResume()
-        initialIntent?.let { postIntent(it) }
+        
+        initialIntent?.let(::postIntent)
     }
     
     override fun onStop() {
@@ -76,6 +75,7 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
     
     private companion object {
         
+        @CheckResult
         private infix fun <T : Any> ObservableSource<T>.bindTo(consumer: (T) -> Unit): Disposable {
             return Observable.wrap(this)
                 .observeOn(AndroidSchedulers.mainThread())
