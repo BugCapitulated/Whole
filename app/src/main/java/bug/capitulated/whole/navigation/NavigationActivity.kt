@@ -69,6 +69,6 @@ abstract class NavigationActivity(
     }
     
     
-    private fun navigateTo(screen: ScreenDestination) = router.navigateTo(screen)
+    private fun navigateTo(screen: ScreenDestination): Unit = router.navigateTo(screen)
     
 }

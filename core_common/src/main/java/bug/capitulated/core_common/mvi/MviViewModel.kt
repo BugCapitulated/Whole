@@ -1,7 +1,6 @@
 package bug.capitulated.core_common.mvi
 
 import androidx.lifecycle.ViewModel
-import bug.capitulated.core_common.util.toObservable
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -39,6 +38,7 @@ abstract class MviViewModel<Intent : Any, Action : Any, State : Any, Subscriptio
     private val flows = mutableMapOf<KClass<out Intent>, SwitchableObservable<*>>()
     
     private val disposable = CompositeDisposable()
+    
     
     init {
         stateSubject.onNext(initialState)

@@ -45,5 +45,5 @@ open class DelegateAdapter<T>(
 
 
 fun <T> AdapterDelegateLayoutContainerViewHolder<T>.setOnItemClickListener(callback: (T) -> Unit) {
-    itemView.setOnClickListener { callback(item) }
+    itemView.setOnClickListener { callback.invoke(item) }
 }

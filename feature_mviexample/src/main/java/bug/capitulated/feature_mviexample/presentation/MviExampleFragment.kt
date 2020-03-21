@@ -22,14 +22,12 @@ class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, Mv
     
     private val adapter = sampleAdapter(::onSampleClick)
     
-    
     override fun provideViewModel(): MviExampleViewModel = getViewModel()
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         toolbar.init(enableArrowUp = false)
         recycler_view.init(adapter)
         
-        savedInstanceState.isNull { postIntent(MviExampleIntent.LoadData) }
         fab.setOnClickListener { postIntent(MviExampleIntent.AddSample) }
     }
     

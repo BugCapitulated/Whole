@@ -19,4 +19,9 @@ dependencies {
 
     // Navigation
     implementation Libraries.cicerone
+
+    // DebugDrawer
+    debugImplementation 'io.palaima.debugdrawer:debugdrawer:0.8.0'
+    releaseImplementation 'io.palaima.debugdrawer:debugdrawer-no-op:0.8.0'
+    implementation 'io.palaima.debugdrawer:debugdrawer-base:0.8.0'
 }

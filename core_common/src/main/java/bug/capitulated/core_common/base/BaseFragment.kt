@@ -81,17 +81,4 @@ abstract class BaseFragment(
         supportActionBar?.setDisplayHomeAsUpEnabled(enableArrowUp)
     }
     
-    
-    protected companion object {
-        
-        /**
-         * Прикрепление аргументов из лямбды к фрагменту
-         */
-        fun <F : BaseFragment> F.withArguments(bundleInitialization: Bundle.() -> Unit): F {
-            arguments = Bundle().apply { bundleInitialization(this) }
-            return this
-        }
-        
-    }
-    
 }

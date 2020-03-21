@@ -13,6 +13,10 @@ class MviExampleViewModel(
     MviExampleViewState()
 ) {
     
+    init {
+        postIntent(MviExampleIntent.LoadData)
+    }
+    
     override fun act(state: MviExampleViewState, intent: MviExampleIntent) = when (intent) {
         MviExampleIntent.LoadData -> interactor.getSamples()
             .map<MviExampleAction>(MviExampleAction::SamplesReceived)

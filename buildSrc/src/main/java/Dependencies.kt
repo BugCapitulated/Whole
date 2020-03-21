@@ -70,7 +70,7 @@ object Version {
     // Language
     val javaVersion = JavaVersion.VERSION_1_8
     val javaVersionString = javaVersion.toString()
-    const val kotlinVersion = "1.3.61"
+    const val kotlinVersion = "1.3.70"
     const val gradleVersion = "3.6.1"
     
     // SDK
