@@ -1,5 +1,7 @@
 package bug.capitulated.core_common.mvi.timetravel
 
+import android.graphics.Color
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,11 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import bug.capitulated.core_common.R
 import bug.capitulated.core_common.mvi.MviFragment
 import bug.capitulated.core_common.mvi.MviViewModel
+import bug.capitulated.core_common.mvi.timetravel.util.setBackgroundColor
 import bug.capitulated.core_common.util.init
 import bug.capitulated.core_common.util.toObservable
 import io.palaima.debugdrawer.base.DebugModuleAdapter
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch
+import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch.Operation.EQUAL
+import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch.Operation.INSERT
+
 
 private typealias AnyMviFragment = MviFragment<*, *, *>
 private typealias AnyMviViewModel = MviViewModel<*, *, *, *>
@@ -35,6 +42,7 @@ class TimeTravelView : DebugModuleAdapter(), DebuggableView {
     private val disposable = CompositeDisposable()
     
     private val timeTravelStates = mutableListOf<TimeTravelState>()
+    private val diffMatchPatch = DiffMatchPatch()
     
     
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup): View {
@@ -50,11 +58,7 @@ class TimeTravelView : DebugModuleAdapter(), DebuggableView {
         
         mviViewModel.state
             .toObservable()
-            .doOnNext { viewState ->
-                val state = TimeTravelState(viewState)
-                timeTravelStates += state
-                notifyAdapter()
-            }
+            .doOnNext(::makeDiffedText)
             .subscribe()
             .addTo(disposable)
     }
@@ -69,6 +73,35 @@ class TimeTravelView : DebugModuleAdapter(), DebuggableView {
         notifyAdapter()
     }
     
+    
+    private fun makeDiffedText(viewState: Any) {
+        val previousViewState = timeTravelStates.lastOrNull()?.state ?: run {
+            addViewStateAndNotifyAdapter(TimeTravelState(viewState))
+            return
+        }
+        
+        val diffedText = makeDiffedText(previousViewState, viewState)
+        addViewStateAndNotifyAdapter(TimeTravelState(viewState, diffedText))
+    }
+    
+    private fun makeDiffedText(previousViewState: Any, viewState: Any) = SpannableStringBuilder().apply {
+        findDiffs(previousViewState, viewState).forEach { diff ->
+            if (diff.operation == EQUAL) {
+                append(diff.text)
+            } else if (diff.operation == INSERT) {
+                append(diff.text.setBackgroundColor(Color.GRAY))
+            }
+        }
+    }
+    
+    private fun findDiffs(first: Any, second: Any): List<DiffMatchPatch.Diff> {
+        return diffMatchPatch.diffMain(first.toString(), second.toString())
+    }
+    
+    private fun addViewStateAndNotifyAdapter(viewState: TimeTravelState) {
+        timeTravelStates += viewState
+        notifyAdapter()
+    }
     
     private fun notifyAdapter() {
         adapter.items = timeTravelStates

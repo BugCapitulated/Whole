@@ -13,7 +13,7 @@ internal fun mviStateAdapter(
     setOnItemClickListener(onViewStateClick)
     
     bind {
-        title.text = item.id
+        title.text = item.title
     }
     
 }
