@@ -16,11 +16,12 @@ dependencies {
     implementation project(FeatureModule.mviExample)
     implementation project(FeatureModule.workManager)
     implementation project(FeatureModule.nightTheme)
+    implementation project(FeatureModule.timeTravelExample)
 
     // Navigation
     implementation Libraries.cicerone
 
-    // DebugDrawer
+    // Debug drawer
     debugImplementation 'io.palaima.debugdrawer:debugdrawer:0.8.0'
     releaseImplementation 'io.palaima.debugdrawer:debugdrawer-no-op:0.8.0'
     implementation 'io.palaima.debugdrawer:debugdrawer-base:0.8.0'

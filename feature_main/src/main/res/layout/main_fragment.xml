@@ -24,4 +24,10 @@
         android:layout_height="wrap_content"
         android:text="Theme editor" />
 
+    <Button
+        android:id="@+id/time_travel_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time travel example" />
+
 </LinearLayout>

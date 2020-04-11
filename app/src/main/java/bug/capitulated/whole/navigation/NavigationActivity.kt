@@ -68,6 +68,10 @@ abstract class NavigationActivity(
         navigateTo(ScreenDestination.NightTheme)
     }
     
+    override fun navigateToTimeTravelExample() {
+        navigateTo(ScreenDestination.TimeTravelExample)
+    }
+    
     
     private fun navigateTo(screen: ScreenDestination): Unit = router.navigateTo(screen)
     

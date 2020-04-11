@@ -1,0 +1,9 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+
+dependencies {
+    // Module
+    implementation project(CoreModule.common)
+    implementation project(FeatureModule.mviExample)
+    implementation project(FeatureModule.workManager)
+}

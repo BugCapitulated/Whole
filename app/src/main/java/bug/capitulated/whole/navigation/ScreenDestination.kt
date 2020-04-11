@@ -3,6 +3,7 @@ package bug.capitulated.whole.navigation
 import bug.capitulated.feature_main.MainFragment
 import bug.capitulated.feature_mviexample.presentation.MviExampleFragment
 import bug.capitulated.feature_nighttheme.NightThemeFragment
+import bug.capitulated.feature_time_travel_example.presentation.TimeTravelExampleFragment
 import bug.capitulated.feature_workmanager.presentation.WorkManagerFragment
 import org.koin.core.KoinComponent
 import org.koin.core.get
@@ -24,6 +25,10 @@ sealed class ScreenDestination : SupportAppScreen(), KoinComponent {
     
     object NightTheme : ScreenDestination() {
         override fun getFragment(): NightThemeFragment = get()
+    }
+    
+    object TimeTravelExample : ScreenDestination() {
+        override fun getFragment(): TimeTravelExampleFragment = get()
     }
     
 }

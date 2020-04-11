@@ -5,6 +5,7 @@ include ':app',
         ':feature_main',
         ':feature_mviexample',
         ':feature_workmanager',
-        ':feature_nighttheme'
+        ':feature_nighttheme',
+        ':feature_time_travel_example'
 
 rootProject.name = 'Whole'

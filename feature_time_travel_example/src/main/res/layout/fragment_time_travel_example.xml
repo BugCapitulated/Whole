@@ -1,0 +1,21 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/mvi_example_fragment"
+        android:name="bug.capitulated.feature_mviexample.presentation.MviExampleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <fragment
+        android:id="@+id/work_manager_fragment"
+        android:name="bug.capitulated.feature_workmanager.presentation.WorkManagerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+</LinearLayout>

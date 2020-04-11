@@ -8,4 +8,6 @@ interface MainNavigator {
     
     fun navigateToNightTheme()
     
+    fun navigateToTimeTravelExample()
+    
 }

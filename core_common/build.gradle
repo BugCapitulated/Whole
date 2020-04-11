@@ -3,7 +3,9 @@ apply from: '../android_commons.gradle'
 apply from: '../android_test_dependencies.gradle'
 
 dependencies {
+    // Debug Drawer
     implementation 'io.palaima.debugdrawer:debugdrawer-base:0.8.0'
 
+    // DiffMatchPatch
     implementation 'org.bitbucket.cowwoc:diff-match-patch:1.2'
 }

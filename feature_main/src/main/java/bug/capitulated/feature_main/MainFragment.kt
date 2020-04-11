@@ -18,6 +18,7 @@ class MainFragment : BaseFragment(layoutId = R.layout.main_fragment) {
         mvi_example_button.setOnClickListener(navigator::navigateToMviExample)
         work_manager_button.setOnClickListener(navigator::navigateToWorkManager)
         night_theme_button.setOnClickListener(navigator::navigateToNightTheme)
+        time_travel_example.setOnClickListener(navigator::navigateToTimeTravelExample)
     }
     
 }

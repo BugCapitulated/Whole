@@ -11,6 +11,7 @@ import bug.capitulated.feature_mviexample.mviExampleModule
 import bug.capitulated.feature_nighttheme.KEY_THEME
 import bug.capitulated.feature_nighttheme.PREFS_NAME
 import bug.capitulated.feature_nighttheme.nightThemeModule
+import bug.capitulated.feature_time_travel_example.timeTravelExampleModule
 import bug.capitulated.feature_workmanager.workManagerModule
 import bug.capitulated.whole.navigation.navigationModule
 import org.koin.android.ext.koin.androidContext
@@ -44,7 +45,8 @@ class WholeApplication : Application() {
                     mainModule,
                     mviExampleModule,
                     workManagerModule,
-                    nightThemeModule
+                    nightThemeModule,
+                    timeTravelExampleModule
                 )
             )
         }

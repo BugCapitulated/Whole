@@ -59,6 +59,7 @@ object FeatureModule {
     const val mviExample = ":feature_mviexample"
     const val workManager = ":feature_workmanager"
     const val nightTheme = ":feature_nighttheme"
+    const val timeTravelExample = ":feature_time_travel_example"
 }
 
 object Release {
