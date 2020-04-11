@@ -73,6 +73,11 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
      */
     protected abstract fun provideViewModel(): MviViewModel<Intent, *, State, Subscription>
     
+    internal fun timeTravelRender(state: Any) {
+        if (!BuildConfig.DEBUG) return
+        @Suppress("UNCHECKED_CAST") render(state as State)
+    }
+    
     /**
      * Приходит новый [State] при каждом его обновлении
      */
@@ -82,13 +87,6 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
      * Принимает [Subscription], что пришёл с ViewModel
      */
     protected open fun onSubscriptionReceived(subscription: Subscription) {}
-    
-    internal fun timeTravelRender(state: Any) {
-        if (!BuildConfig.DEBUG) return
-        
-        @Suppress("UNCHECKED_CAST")
-        render(state as State)
-    }
     
     protected fun postIntent(intent: Intent): Unit = viewModel.postIntent(intent)
     

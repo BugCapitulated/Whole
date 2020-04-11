@@ -1,3 +1,5 @@
+@file:Suppress("NON_EXHAUSTIVE_WHEN")
+
 package bug.capitulated.core_common.mvi.timetravel
 
 import android.graphics.Color
@@ -18,7 +20,6 @@ import io.reactivex.rxkotlin.addTo
 import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch
 import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch.Operation.EQUAL
 import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch.Operation.INSERT
-
 
 private typealias AnyMviFragment = MviFragment<*, *, *>
 private typealias AnyMviViewModel = MviViewModel<*, *, *, *>
@@ -85,17 +86,16 @@ class TimeTravelView : DebugModuleAdapter(), DebuggableView {
     }
     
     private fun makeDiffedText(previousViewState: Any, viewState: Any) = SpannableStringBuilder().apply {
-        findDiffs(previousViewState, viewState).forEach { diff ->
-            if (diff.operation == EQUAL) {
-                append(diff.text)
-            } else if (diff.operation == INSERT) {
-                append(diff.text.setBackgroundColor(Color.GRAY))
+        findDiffs(previousViewState, viewState) {
+            when (operation) {
+                EQUAL -> append(text)
+                INSERT -> append(text.setBackgroundColor(Color.GRAY))
             }
         }
     }
     
-    private fun findDiffs(first: Any, second: Any): List<DiffMatchPatch.Diff> {
-        return diffMatchPatch.diffMain(first.toString(), second.toString())
+    private fun findDiffs(first: Any, second: Any, action: DiffMatchPatch.Diff.() -> Unit) {
+        return diffMatchPatch.diffMain(first.toString(), second.toString()).forEach(action::invoke)
     }
     
     private fun addViewStateAndNotifyAdapter(viewState: TimeTravelState) {
@@ -103,9 +103,9 @@ class TimeTravelView : DebugModuleAdapter(), DebuggableView {
         notifyAdapter()
     }
     
-    private fun notifyAdapter() {
-        adapter.items = timeTravelStates
-        adapter.notifyDataSetChanged()
+    private fun notifyAdapter() = adapter.run {
+        items = timeTravelStates
+        notifyDataSetChanged()
     }
     
     private fun onViewStateClick(timeTravelState: TimeTravelState) {
