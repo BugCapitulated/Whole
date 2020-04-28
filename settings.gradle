@@ -4,7 +4,7 @@ include ':app',
 
         ':core:common',
         ':core:room',
-        ':core:workmanager',
+        ':core:workmanager-data',
 
         ':feature:main',
         ':feature:mviexample',

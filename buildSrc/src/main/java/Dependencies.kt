@@ -51,7 +51,7 @@ object CoreModule {
     const val common = ":core:common"
     
     const val room = ":core:room"
-    const val workManager = ":core:workmanager"
+    const val workManager = ":core:workmanager-data"
 }
 
 object FeatureModule {
