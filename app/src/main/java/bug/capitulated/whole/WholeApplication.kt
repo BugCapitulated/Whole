@@ -4,16 +4,10 @@ import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import bug.capitulated.core_common.theme.Theme
-import bug.capitulated.core_room.datasource.roomModule
-import bug.capitulated.core_workmanager.workManagerCoreModule
-import bug.capitulated.feature_main.mainModule
-import bug.capitulated.feature_mviexample.mviExampleModule
 import bug.capitulated.feature_nighttheme.KEY_THEME
 import bug.capitulated.feature_nighttheme.PREFS_NAME
-import bug.capitulated.feature_nighttheme.nightThemeModule
-import bug.capitulated.feature_workmanager.workManagerModule
-import bug.capitulated.whole.navigation.navigationModule
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class WholeApplication : Application() {
@@ -32,21 +26,9 @@ class WholeApplication : Application() {
     
     private fun initKoin() {
         startKoin {
+            if (BuildConfig.DEBUG) androidLogger()
             androidContext(this@WholeApplication)
-            
-            modules(
-                listOf(
-                    navigationModule,
-                    
-                    roomModule,
-                    workManagerCoreModule,
-                    
-                    mainModule,
-                    mviExampleModule,
-                    workManagerModule,
-                    nightThemeModule
-                )
-            )
+            modules(koinModules)
         }
     }
     
