@@ -48,17 +48,17 @@ object ApplicationId {
 object CoreModule {
     const val app = ":app"
     
-    const val common = ":core_common"
+    const val common = ":core:common"
     
-    const val room = ":core_room"
-    const val workManager = ":core_workmanager"
+    const val room = ":core:room"
+    const val workManager = ":core:workmanager"
 }
 
 object FeatureModule {
-    const val main = ":feature_main"
-    const val mviExample = ":feature_mviexample"
-    const val workManager = ":feature_workmanager"
-    const val nightTheme = ":feature_nighttheme"
+    const val main = ":feature:main"
+    const val mviExample = ":feature:mviexample"
+    const val workManager = ":feature:workmanager"
+    const val nightTheme = ":feature:nighttheme"
 }
 
 object Release {

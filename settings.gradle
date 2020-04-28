@@ -1,10 +1,12 @@
-include ':app',
-        ':core_common',
-        ':core_room',
-        ':core_workmanager',
-        ':feature_main',
-        ':feature_mviexample',
-        ':feature_workmanager',
-        ':feature_nighttheme'
-
 rootProject.name = 'Whole'
+
+include ':app',
+
+        ':core:common',
+        ':core:room',
+        ':core:workmanager',
+
+        ':feature:main',
+        ':feature:mviexample',
+        ':feature:workmanager',
+        ':feature:nighttheme'
