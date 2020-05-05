@@ -6,6 +6,7 @@ import bug.capitulated.feature_nighttheme.NightThemeFragment
 import bug.capitulated.feature_workmanager.presentation.WorkManagerFragment
 import org.koin.core.KoinComponent
 import org.koin.core.get
+import org.koin.core.parameter.parametersOf
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 sealed class ScreenDestination : SupportAppScreen(), KoinComponent {
@@ -15,7 +16,7 @@ sealed class ScreenDestination : SupportAppScreen(), KoinComponent {
     }
     
     object MviExample : ScreenDestination() {
-        override fun getFragment(): MviExampleFragment = get()
+        override fun getFragment(): MviExampleFragment = get { parametersOf("test param") }
     }
     
     object WorkManager : ScreenDestination() {

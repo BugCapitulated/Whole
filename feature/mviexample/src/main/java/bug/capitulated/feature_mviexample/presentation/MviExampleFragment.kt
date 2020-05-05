@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.mviexample_fragment.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MviExampleFragment(
-    viewModel: MviExampleViewModel
+    viewModel: MviExampleViewModel,
+    private val testArgument: String
 ) : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
     viewModel = viewModel,
     layoutId = R.layout.mviexample_fragment
@@ -32,6 +33,8 @@ class MviExampleFragment(
         
         savedInstanceState.isNull { postIntent(MviExampleIntent.LoadData) }
         fab.setOnClickListener { postIntent(MviExampleIntent.AddSample) }
+    
+        toast(testArgument)
     }
     
     override fun render(state: MviExampleViewState) {

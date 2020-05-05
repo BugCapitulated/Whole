@@ -11,7 +11,10 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val mviExampleModule = module {
-    fragment { MviExampleFragment(get()) }
+    fragment { (testArgument: String) ->
+        MviExampleFragment(get(), testArgument)
+    }
+
     viewModel { MviExampleViewModel(get()) }
     single<MviExampleInteractor> { MviExampleInteractorImpl(get()) }
     single<MviExampleRepository> { MviExampleRepositoryImpl(get()) }
