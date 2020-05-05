@@ -8,6 +8,7 @@ import bug.capitulated.feature_nighttheme.KEY_THEME
 import bug.capitulated.feature_nighttheme.PREFS_NAME
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 
 class WholeApplication : Application() {
@@ -28,6 +29,7 @@ class WholeApplication : Application() {
         startKoin {
             if (BuildConfig.DEBUG) androidLogger()
             androidContext(this@WholeApplication)
+            fragmentFactory()
             modules(koinModules)
         }
     }

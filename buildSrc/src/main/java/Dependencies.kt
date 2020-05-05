@@ -3,6 +3,7 @@ import org.gradle.api.JavaVersion
 
 private const val appCompatVersion = "1.0.0"
 private const val coreKtxVersion = "1.2.0"
+private const val fragmentKtxVersion = "1.2.4"
 private const val materialVersion = "1.1.0"
 private const val constraintLayoutVersion = "1.1.3"
 private const val recyclerVersion = "1.1.0"
@@ -87,6 +88,7 @@ object Libraries {
     // Support
     const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
     const val coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
     
     // UI
     const val material = "com.google.android.material:material:$materialVersion"
@@ -104,6 +106,7 @@ object Libraries {
     
     // DI
     const val koin = "org.koin:koin-androidx-scope:$koinVersion"
+    const val koinFragment = "org.koin:koin-androidx-fragment:$koinVersion"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
     
     // Network

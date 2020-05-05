@@ -11,15 +11,16 @@ import bug.capitulated.feature_workmanager.presentation.recycler.workManagerAdap
 import kotlinx.android.synthetic.main.workmanager_fragment.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class WorkManagerFragment : MviFragment<WorkManagerIntent, WorkManagerViewState, Nothing>(
+class WorkManagerFragment(
+    viewModel: WorkManagerViewModel
+) : MviFragment<WorkManagerIntent, WorkManagerViewState, Nothing>(
+    viewModel = viewModel,
     layoutId = R.layout.workmanager_fragment
 ) {
     
     private val adapter = workManagerAdapter()
     
-    
-    override fun provideViewModel(): WorkManagerViewModel = getViewModel()
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recycler_view.init(adapter)
         

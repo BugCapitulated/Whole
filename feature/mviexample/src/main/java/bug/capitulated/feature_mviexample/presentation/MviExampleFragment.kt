@@ -16,14 +16,15 @@ import bug.capitulated.feature_mviexample.presentation.recycler.sampleAdapter
 import kotlinx.android.synthetic.main.mviexample_fragment.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
+class MviExampleFragment(
+    viewModel: MviExampleViewModel
+) : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
+    viewModel = viewModel,
     layoutId = R.layout.mviexample_fragment
 ) {
     
     private val adapter = sampleAdapter(::onSampleClick)
     
-    
-    override fun provideViewModel(): MviExampleViewModel = getViewModel()
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         toolbar.init(enableArrowUp = false)

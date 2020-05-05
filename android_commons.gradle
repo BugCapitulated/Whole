@@ -43,6 +43,7 @@ dependencies {
     // Support
     implementation Libraries.appCompat
     implementation Libraries.coreKtx
+    implementation Libraries.fragmentKtx
 
     // UI
     implementation Libraries.material
@@ -52,6 +53,7 @@ dependencies {
 
     // DI
     implementation Libraries.koin
+    implementation Libraries.koinFragment
     implementation Libraries.koinViewModel
 
     // Rx
