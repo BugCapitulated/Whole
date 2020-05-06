@@ -17,9 +17,9 @@ abstract class BaseFragment(
 ) : Fragment() {
     
     protected val activity get() = getActivity() as AppCompatActivity
-    protected val supportActionBar by lazy { activity.supportActionBar }
+    protected val supportActionBar get() = activity.supportActionBar
     
-    protected val disposable by lazy { CompositeDisposable() }
+    protected val disposable by lazy(::CompositeDisposable)
     
     protected var menu: Menu? = null
     
@@ -79,19 +79,6 @@ abstract class BaseFragment(
         title?.let { this.title = title }
         titleRes?.let { this.title = getString(titleRes) }
         supportActionBar?.setDisplayHomeAsUpEnabled(enableArrowUp)
-    }
-    
-    
-    protected companion object {
-        
-        /**
-         * Прикрепление аргументов из лямбды к фрагменту
-         */
-        fun <F : BaseFragment> F.withArguments(bundleInitialization: Bundle.() -> Unit): F {
-            arguments = Bundle().apply { bundleInitialization(this) }
-            return this
-        }
-        
     }
     
 }

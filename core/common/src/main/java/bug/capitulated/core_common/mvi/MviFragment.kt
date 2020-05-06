@@ -17,12 +17,11 @@ import io.reactivex.schedulers.Schedulers
  */
 abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
     private val viewModel: MviViewModel<Intent, *, State, Subscription>,
+    private val initialIntent: Intent? = null,
 
     @LayoutRes layoutId: Int,
     @MenuRes menuResource: Int? = null,
-    hasOptionMenu: Boolean = true,
-    
-    private val initialIntent: Intent? = null
+    hasOptionMenu: Boolean = true
 ) : BaseFragment(layoutId, menuResource, hasOptionMenu) {
     
     protected val currentState: State?
