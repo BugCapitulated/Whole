@@ -6,7 +6,6 @@ import bug.capitulated.feature_mviexample.BEAN_FRAGMENT_MVI_EXAMPLE
 import bug.capitulated.feature_nighttheme.BEAN_FRAGMENT_NIGHT_THEME
 import bug.capitulated.feature_workmanager.BEAN_FRAGMENT_WORK_MANAGER
 import org.koin.core.KoinComponent
-import org.koin.core.parameter.parametersOf
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 sealed class ScreenDestination : SupportAppScreen(), KoinComponent {
@@ -16,9 +15,7 @@ sealed class ScreenDestination : SupportAppScreen(), KoinComponent {
     }
     
     object MviExample : ScreenDestination() {
-        override fun getFragment() = getNamedFragment(BEAN_FRAGMENT_MVI_EXAMPLE) {
-            parametersOf("test param")
-        }
+        override fun getFragment() = getNamedFragment(BEAN_FRAGMENT_MVI_EXAMPLE)
     }
     
     object WorkManager : ScreenDestination() {

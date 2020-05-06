@@ -14,17 +14,16 @@ import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleSubscriptio
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleViewState
 import bug.capitulated.feature_mviexample.presentation.recycler.sampleAdapter
 import kotlinx.android.synthetic.main.mviexample_fragment.*
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-internal class MviExampleFragment(
-    viewModel: MviExampleViewModel,
-    private val testArgument: String
-) : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
-    viewModel = viewModel,
+internal class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
     layoutId = R.layout.mviexample_fragment
 ) {
     
     private val adapter = sampleAdapter(::onSampleClick)
     
+    
+    override fun provideViewModel(): MviExampleViewModel = getViewModel()
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         toolbar.init(enableArrowUp = false)
@@ -32,8 +31,6 @@ internal class MviExampleFragment(
         
         savedInstanceState.isNull { postIntent(MviExampleIntent.LoadData) }
         fab.setOnClickListener { postIntent(MviExampleIntent.AddSample) }
-        
-        toast(testArgument)
     }
     
     override fun render(state: MviExampleViewState) {

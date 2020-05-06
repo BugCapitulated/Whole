@@ -3,7 +3,6 @@
 package bug.capitulated.core_common.util
 
 import androidx.fragment.app.Fragment
-import org.koin.androidx.fragment.dsl.fragment
 import org.koin.core.KoinComponent
 import org.koin.core.definition.BeanDefinition
 import org.koin.core.definition.Definition
@@ -21,4 +20,4 @@ inline fun Module.namedFragment(
     fragmentTag: String,
     override: Boolean = false,
     noinline definition: Definition<Fragment>
-): BeanDefinition<Fragment> = fragment(named(fragmentTag), override, definition)
+): BeanDefinition<Fragment> = factory(named(fragmentTag), override, definition)

@@ -16,18 +16,19 @@ import io.reactivex.schedulers.Schedulers
  * Реализация View в паттерне отображения MVI
  */
 abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
-    private val viewModel: MviViewModel<Intent, *, State, Subscription>,
-    private val initialIntent: Intent? = null,
-
     @LayoutRes layoutId: Int,
     @MenuRes menuResource: Int? = null,
-    hasOptionMenu: Boolean = true
+    hasOptionMenu: Boolean = true,
+    
+    private val initialIntent: Intent? = null
 ) : BaseFragment(layoutId, menuResource, hasOptionMenu) {
     
     protected val currentState: State?
         get() = _currentState
     
     private var _currentState: State? = null
+    
+    private val viewModel by lazy(::provideViewModel)
     
     private val mviDisposable = CompositeDisposable()
     
@@ -48,6 +49,11 @@ abstract class MviFragment<Intent : Any, State : Any, Subscription : Any>(
         mviDisposable.clear()
     }
     
+    
+    /**
+     * Принимает и привязывает ViewModel к экрану
+     */
+    protected abstract fun provideViewModel(): MviViewModel<Intent, *, State, Subscription>
     
     /**
      * Приходит новый [State] при каждом его обновлении

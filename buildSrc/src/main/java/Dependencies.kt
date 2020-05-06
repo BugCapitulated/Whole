@@ -106,7 +106,6 @@ object Libraries {
     
     // DI
     const val koin = "org.koin:koin-androidx-scope:$koinVersion"
-    const val koinFragment = "org.koin:koin-androidx-fragment:$koinVersion"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
     
     // Network

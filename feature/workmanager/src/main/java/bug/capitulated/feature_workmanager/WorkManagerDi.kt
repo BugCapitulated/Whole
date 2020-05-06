@@ -13,8 +13,7 @@ import org.koin.dsl.module
 const val BEAN_FRAGMENT_WORK_MANAGER = "WorkManagerFragment"
 
 val workManagerModule = module {
-    namedFragment(BEAN_FRAGMENT_WORK_MANAGER) { WorkManagerFragment(get()) }
-    
+    namedFragment(BEAN_FRAGMENT_WORK_MANAGER) { WorkManagerFragment() }
     viewModel { WorkManagerViewModel(get(), get()) }
     single<WorkManagerInteractor> { WorkManagerInteractorImpl(get()) }
     single<WorkManagerRepository> { WorkManagerRepositoryImpl(get()) }
