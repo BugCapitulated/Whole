@@ -1,8 +1,10 @@
 package bug.capitulated.feature_main
 
-import org.koin.androidx.fragment.dsl.fragment
+import bug.capitulated.core_common.util.namedFragment
 import org.koin.dsl.module
 
+const val BEAN_FRAGMENT_MAIN = "MainFragment"
+
 val mainModule = module {
-    fragment { MainFragment() }
+    namedFragment(BEAN_FRAGMENT_MAIN) { MainFragment() }
 }

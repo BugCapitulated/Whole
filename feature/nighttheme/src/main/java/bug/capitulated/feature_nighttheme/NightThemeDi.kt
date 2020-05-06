@@ -1,8 +1,10 @@
 package bug.capitulated.feature_nighttheme
 
-import org.koin.androidx.fragment.dsl.fragment
+import bug.capitulated.core_common.util.namedFragment
 import org.koin.dsl.module
 
+const val BEAN_FRAGMENT_NIGHT_THEME = "NightThemeFragment"
+
 val nightThemeModule = module {
-    fragment { NightThemeFragment() }
+    namedFragment(BEAN_FRAGMENT_NIGHT_THEME) { NightThemeFragment() }
 }
