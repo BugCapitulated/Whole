@@ -3,7 +3,7 @@ package bug.capitulated.feature_workmanager.domain
 import bug.capitulated.feature_workmanager.data.WorkManagerRepository
 import io.reactivex.Completable
 
-interface WorkManagerInteractor {
+internal interface WorkManagerInteractor {
     
     fun startWork(): Completable
     

@@ -10,7 +10,7 @@ import bug.capitulated.feature_workmanager.presentation.mvi.WorkManagerIntent
 import bug.capitulated.feature_workmanager.presentation.mvi.WorkManagerViewState
 import bug.capitulated.feature_workmanager.presentation.recycler.toMyWorkInfos
 
-class WorkManagerViewModel(
+internal class WorkManagerViewModel(
     private val workManager: WorkManager,
     private val interactor: WorkManagerInteractor
 ) : MviViewModel<WorkManagerIntent, WorkManagerAction, WorkManagerViewState, Nothing>(

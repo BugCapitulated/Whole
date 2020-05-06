@@ -6,7 +6,7 @@ import bug.capitulated.core_common.base.BaseFragment
 import bug.capitulated.core_common.util.setOnClickListener
 import kotlinx.android.synthetic.main.main_fragment.*
 
-class MainFragment : BaseFragment(layoutId = R.layout.main_fragment) {
+internal class MainFragment : BaseFragment(layoutId = R.layout.main_fragment) {
     
     private val navigator by lazy { activity as MainNavigator }
     

@@ -1,6 +1,6 @@
 package bug.capitulated.feature_workmanager.presentation.mvi
 
-sealed class WorkManagerIntent {
+internal sealed class WorkManagerIntent {
     
     object Initialize : WorkManagerIntent()
     

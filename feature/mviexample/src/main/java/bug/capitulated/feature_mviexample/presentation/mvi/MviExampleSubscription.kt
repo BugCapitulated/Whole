@@ -1,6 +1,6 @@
 package bug.capitulated.feature_mviexample.presentation.mvi
 
-sealed class MviExampleSubscription {
+internal sealed class MviExampleSubscription {
     
     class LoadDataFailed(val error: Throwable) : MviExampleSubscription()
     

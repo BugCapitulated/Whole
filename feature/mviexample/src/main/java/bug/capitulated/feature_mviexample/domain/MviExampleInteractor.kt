@@ -5,7 +5,7 @@ import bug.capitulated.feature_mviexample.data.MviExampleRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
 
-interface MviExampleInteractor {
+internal interface MviExampleInteractor {
     
     fun addSample(): Completable
     
@@ -13,7 +13,7 @@ interface MviExampleInteractor {
     
 }
 
-class MviExampleInteractorImpl(
+internal class MviExampleInteractorImpl(
     private val repository: MviExampleRepository
 ) : MviExampleInteractor {
     

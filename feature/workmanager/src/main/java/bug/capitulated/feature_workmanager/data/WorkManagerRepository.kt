@@ -2,7 +2,7 @@ package bug.capitulated.feature_workmanager.data
 
 import bug.capitulated.core_workmanager.WorkManagerDataSource
 
-interface WorkManagerRepository {
+internal interface WorkManagerRepository {
     
     fun startWork()
 

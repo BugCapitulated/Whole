@@ -4,7 +4,7 @@ import bug.capitulated.core_room.datasource.SampleRoomDataSource
 import bug.capitulated.core_room.datasource.entity.SampleEntity
 import io.reactivex.Observable
 
-interface MviExampleRepository {
+internal interface MviExampleRepository {
     
     fun addSample()
     
@@ -12,7 +12,7 @@ interface MviExampleRepository {
     
 }
 
-class MviExampleRepositoryImpl(
+internal class MviExampleRepositoryImpl(
     private val roomDataSource: SampleRoomDataSource
 ) : MviExampleRepository {
     

@@ -9,9 +9,8 @@ import bug.capitulated.feature_workmanager.presentation.mvi.WorkManagerIntent
 import bug.capitulated.feature_workmanager.presentation.mvi.WorkManagerViewState
 import bug.capitulated.feature_workmanager.presentation.recycler.workManagerAdapter
 import kotlinx.android.synthetic.main.workmanager_fragment.*
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class WorkManagerFragment(
+internal class WorkManagerFragment(
     viewModel: WorkManagerViewModel
 ) : MviFragment<WorkManagerIntent, WorkManagerViewState, Nothing>(
     viewModel = viewModel,
@@ -20,7 +19,7 @@ class WorkManagerFragment(
     
     private val adapter = workManagerAdapter()
     
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recycler_view.init(adapter)
         

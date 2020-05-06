@@ -7,7 +7,7 @@ import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleIntent
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleSubscription
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleViewState
 
-class MviExampleViewModel(
+internal class MviExampleViewModel(
     private val interactor: MviExampleInteractor
 ) : MviViewModel<MviExampleIntent, MviExampleAction, MviExampleViewState, MviExampleSubscription>(
     MviExampleViewState()

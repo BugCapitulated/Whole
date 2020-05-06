@@ -5,7 +5,7 @@ import bug.capitulated.core_common.recycler.KeyEntity
 import bug.capitulated.core_workmanager.WORK_MANAGER_PARAM_CURRENT_TIME
 import java.util.*
 
-data class MyWorkInfo(
+internal data class MyWorkInfo(
     val uuid: UUID,
     val state: String,
     val time: Long,

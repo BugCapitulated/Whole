@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.nighttheme_fragment.*
 const val PREFS_NAME = "PREFS_NAME"
 const val KEY_THEME = "KEY_THEME"
 
-class NightThemeFragment : BaseFragment(
+internal class NightThemeFragment : BaseFragment(
     layoutId = R.layout.nighttheme_fragment
 ) {
     

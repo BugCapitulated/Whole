@@ -1,6 +1,6 @@
 package bug.capitulated.feature_mviexample.presentation.mvi
 
-sealed class MviExampleIntent {
+internal sealed class MviExampleIntent {
     
     object AddSample : MviExampleIntent()
     
