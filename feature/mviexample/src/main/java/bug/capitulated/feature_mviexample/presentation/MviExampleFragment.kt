@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import bug.capitulated.core_common.mvi.MviFragment
+import bug.capitulated.core_common.util.getScopedViewModel
 import bug.capitulated.core_common.util.init
 import bug.capitulated.core_common.util.isNull
 import bug.capitulated.core_common.util.toast
@@ -23,7 +24,7 @@ internal class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleView
     private val adapter = sampleAdapter(::onSampleClick)
     
     
-    override fun provideViewModel(): MviExampleViewModel = getViewModel()
+    override fun provideViewModel(): MviExampleViewModel = getScopedViewModel()
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         toolbar.init(enableArrowUp = false)

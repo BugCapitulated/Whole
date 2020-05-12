@@ -14,7 +14,10 @@ const val BEAN_FRAGMENT_WORK_MANAGER = "WorkManagerFragment"
 
 val workManagerModule = module {
     namedFragment(BEAN_FRAGMENT_WORK_MANAGER) { WorkManagerFragment() }
-    viewModel { WorkManagerViewModel(get(), get()) }
-    single<WorkManagerInteractor> { WorkManagerInteractorImpl(get()) }
-    single<WorkManagerRepository> { WorkManagerRepositoryImpl(get()) }
+
+    scope<WorkManagerFragment> {
+        viewModel { WorkManagerViewModel(get(), get()) }
+        scoped<WorkManagerInteractor> { WorkManagerInteractorImpl(get()) }
+        scoped<WorkManagerRepository> { WorkManagerRepositoryImpl(get()) }
+    }
 }

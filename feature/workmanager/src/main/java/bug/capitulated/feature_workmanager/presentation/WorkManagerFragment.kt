@@ -3,6 +3,7 @@ package bug.capitulated.feature_workmanager.presentation
 import android.os.Bundle
 import android.view.View
 import bug.capitulated.core_common.mvi.MviFragment
+import bug.capitulated.core_common.util.getScopedViewModel
 import bug.capitulated.core_common.util.init
 import bug.capitulated.feature_workmanager.R
 import bug.capitulated.feature_workmanager.presentation.mvi.WorkManagerIntent
@@ -18,7 +19,7 @@ internal class WorkManagerFragment : MviFragment<WorkManagerIntent, WorkManagerV
     private val adapter = workManagerAdapter()
     
     
-    override fun provideViewModel(): WorkManagerViewModel = getViewModel()
+    override fun provideViewModel(): WorkManagerViewModel = getScopedViewModel()
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recycler_view.init(adapter)

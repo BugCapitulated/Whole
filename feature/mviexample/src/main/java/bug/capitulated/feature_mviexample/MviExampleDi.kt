@@ -14,7 +14,10 @@ const val BEAN_FRAGMENT_MVI_EXAMPLE = "MviExampleFragment"
 
 val mviExampleModule = module {
     namedFragment(BEAN_FRAGMENT_MVI_EXAMPLE) { MviExampleFragment() }
-    viewModel { MviExampleViewModel(get()) }
-    single<MviExampleInteractor> { MviExampleInteractorImpl(get()) }
-    single<MviExampleRepository> { MviExampleRepositoryImpl(get()) }
+
+    scope<MviExampleFragment> {
+        viewModel { MviExampleViewModel(get()) }
+        scoped<MviExampleInteractor> { MviExampleInteractorImpl(get()) }
+        scoped<MviExampleRepository> { MviExampleRepositoryImpl(get()) }
+    }
 }
