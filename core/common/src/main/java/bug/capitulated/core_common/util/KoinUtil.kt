@@ -3,21 +3,20 @@
 package bug.capitulated.core_common.util
 
 import androidx.fragment.app.Fragment
-import org.koin.core.KoinComponent
+import org.koin.core.Koin
 import org.koin.core.definition.BeanDefinition
 import org.koin.core.definition.Definition
-import org.koin.core.get
 import org.koin.core.module.Module
 import org.koin.core.parameter.ParametersDefinition
 import org.koin.core.qualifier.named
 
-inline fun KoinComponent.getNamedFragment(
+inline fun Koin.getNamedFragment(
     fragmentTag: String,
     noinline parameters: ParametersDefinition? = null
 ): Fragment = get(named(fragmentTag), parameters)
 
 inline fun Module.namedFragment(
-    fragmentTag: String,
+    fragmentClass: Class<out Fragment>,
     override: Boolean = false,
     noinline definition: Definition<Fragment>
-): BeanDefinition<Fragment> = factory(named(fragmentTag), override, definition)
+): BeanDefinition<Fragment> = factory(named(fragmentClass.name), override, definition)

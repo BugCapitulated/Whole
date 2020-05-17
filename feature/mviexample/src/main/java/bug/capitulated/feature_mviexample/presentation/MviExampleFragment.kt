@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import bug.capitulated.core_common.mvi.MviFragment
+import bug.capitulated.core_common.util.argumentString
 import bug.capitulated.core_common.util.init
 import bug.capitulated.core_common.util.isNull
 import bug.capitulated.core_common.util.toast
@@ -14,16 +15,18 @@ import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleSubscriptio
 import bug.capitulated.feature_mviexample.presentation.mvi.MviExampleViewState
 import bug.capitulated.feature_mviexample.presentation.recycler.sampleAdapter
 import kotlinx.android.synthetic.main.mviexample_fragment.*
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-internal class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
+internal class MviExampleFragment(
+    viewModel: MviExampleViewModel
+) : MviFragment<MviExampleIntent, MviExampleViewState, MviExampleSubscription>(
+    viewModel = viewModel,
     layoutId = R.layout.mviexample_fragment
 ) {
-    
+
+    private val testArgument by argumentString("testArgument")
+
     private val adapter = sampleAdapter(::onSampleClick)
     
-    
-    override fun provideViewModel(): MviExampleViewModel = getViewModel()
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         toolbar.init(enableArrowUp = false)
@@ -31,6 +34,8 @@ internal class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleView
         
         savedInstanceState.isNull { postIntent(MviExampleIntent.LoadData) }
         fab.setOnClickListener { postIntent(MviExampleIntent.AddSample) }
+        
+        toast(testArgument)
     }
     
     override fun render(state: MviExampleViewState) {
@@ -49,4 +54,12 @@ internal class MviExampleFragment : MviFragment<MviExampleIntent, MviExampleView
         toast("Item " + item.id.toString() + " clicked")
     }
     
+}
+
+private const val KEY_TESTARGUMENT = "testArgument"
+
+fun mviExampleArguments(testArgument: String): Bundle {
+    return Bundle().apply {
+        putString(KEY_TESTARGUMENT, testArgument)
+    }
 }
