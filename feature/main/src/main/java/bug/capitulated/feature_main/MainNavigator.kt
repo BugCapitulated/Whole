@@ -2,7 +2,7 @@ package bug.capitulated.feature_main
 
 interface MainNavigator {
     
-    fun navigateToMviExample()
+    fun navigateToMviExample(testArgument: String)
     
     fun navigateToWorkManager()
     

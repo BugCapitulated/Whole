@@ -15,15 +15,15 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 abstract class NavigationActivity(
     @IdRes private val fragmentContainer: Int
 ) : BaseActivity(), BaseNavigator, MainNavigator {
-    
+
     private val navigatorHolder by inject<NavigatorHolder>()
     private val navigator by inject<SupportAppNavigator> { parametersOf(this, fragmentContainer) }
     private val router by inject<CustomRouter>()
     
     protected val currentFragment: BaseFragment?
         get() = supportFragmentManager.findFragmentById(fragmentContainer) as? BaseFragment
-    
-    
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
@@ -31,44 +31,44 @@ abstract class NavigationActivity(
             router.newRootScreen(ScreenDestination.Main)
         }
     }
-    
+
     override fun onResumeFragments() {
         super.onResumeFragments()
         navigatorHolder.setNavigator(navigator)
     }
-    
+
     override fun onPause() {
         super.onPause()
         navigatorHolder.removeNavigator()
     }
-    
+
     override fun onBackPressed() {
         currentFragment?.onBackPressed() ?: super.onBackPressed()
     }
-    
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         currentFragment?.onRequestPermissionsResult(requestCode, permissions, grantResults)
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
-    
-    
+
+
     override fun closeScreen() {
         router.exit()
     }
-    
-    override fun navigateToMviExample() {
-        navigateTo(ScreenDestination.MviExample)
+
+    override fun navigateToMviExample(testArgument: String) {
+        navigateTo(ScreenDestination.MviExample(testArgument))
     }
-    
+
     override fun navigateToWorkManager() {
         navigateTo(ScreenDestination.WorkManager)
     }
-    
+
     override fun navigateToNightTheme() {
         navigateTo(ScreenDestination.NightTheme)
     }
-    
-    
+
+
     private fun navigateTo(screen: ScreenDestination) = router.navigateTo(screen)
-    
+
 }
